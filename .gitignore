@@ -4,13 +4,17 @@ livro/AAPDIR
 livro/*.chunked
 livro/*.pdf
 livro/*.png
+livro/*.svg
 livro/*.zip
 livro/livro.xml
 livro/slides.html
 livro/livro.tex
+livro/images/graphiz.eps
+# TODO ignorar recursivamente *.asc~
+# Alguém adicionou por engano, portanto pode acontecer novamente.
+livro/*.asc~
+livro/capitulos/*.asc~
 
-# Arquivos gerados pelo latex
-*.pdf
-livro.aux
-livro.log
+/log.txt
+releases
 
