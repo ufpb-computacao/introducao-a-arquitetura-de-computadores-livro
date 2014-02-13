@@ -1,0 +1,917 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.6" />
+<meta name="description" content="Livro de Introdução à Arquitetura de Computadores" />
+<meta name="keywords" content="Computação" />
+<title>Introdução a Arquitetura de Computadores</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="book">
+<div id="header">
+<h1>Introdução a Arquitetura de Computadores</h1>
+<span id="author">Alisson Vasconcelos de Brito</span><br />
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="prefacio">Prefácio</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>texto</p></div>
+<div class="sect2">
+<h3 id="_público_alvo">Público alvo</h3>
+<div class="paragraph"><p>estudantes</p></div>
+</div>
+<div class="sect2">
+<h3 id="_método_de_elaboração">Método de Elaboração</h3>
+<div class="paragraph"><p>Financiamento da capes.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_contribuição">Contribuição</h3>
+<div class="paragraph"><p>Erros e etc.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introdução">Introdução</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<div class="title">Objetivos do capítulo</div>
+<div class="content">
+<div class="paragraph"><p>Ao final deste capítulo você deverá ser capaz de:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+objetivo 1
+</p>
+</li>
+<li>
+<p>
+objetivo 2
+</p>
+</li>
+<li>
+<p>
+objetivo N
+</p>
+</li>
+</ul></div>
+</div>
+<div class="attribution">
+</div></div>
+<div class="paragraph"><p>Neste lugar você deve apresentar o conteúdo em forma de diálogo.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Nota</div>
+</td>
+<td class="content">Para começar a escrever um novo capítulo, copie este arquivo e
+salve com outro nome (não utilize espaço no nome do arquivo). Em seguida,
+atualize o arquivo <strong>livro.asc</strong> para incluir o novo arquivo criado.
+Consulte o manual.</td>
+</tr></table>
+</div>
+<div class="sect2">
+<h3 id="_o_que_é_a_arquitetura_de_um_computador">O que é a Arquitetura de um Computador?</h3>
+<div class="paragraph"><p>O termo arquitetura é principalmente utilizado na construção e decoração de edificações. Ele diz respeito à forma e a estrutura de uma construção. O termo refere-se à arte ou a técnica de projetar e edificar o ambiente habitado pelo ser humano. Na computação o termo foi adaptado para denominar a técnica (talvez até a arte também) de projetar e construir computadores. Nesse livro você não vai aprender a construir seu próprio computador. Para isso eu recomendo outras fontes [HENNESSY e PATTERSON]. Esses livros são feitos para engenheiros de computadores e acompanhá-los antes de se tornar um pode ser uma tarefa bastante árdua. Aqui você vai conhecer o computador por dentro e saber como ele funciona. Você não será capaz de construir um computador, mas saberá o suficiente para entender como os programas funcionam e até porque o computador para de funcionar as vezes, ou funciona lentamente, e que nessas situações, pressionar teclas do teclado rapidamente, ao mesmo tempo que move o mouse aleatoriamente, não faz o computador voltar a trabalhar novamente.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_por_que_estudar_arquitetura_de_computadores">Por que estudar Arquitetura de Computadores?</h3>
+<div class="paragraph"><p>É essencial que todos profissionais da Computação tenham pelo menos conhecimentos básicos de Arquitetura de Computadores. Saber como o computador funciona nos permitirá entender sua capacidade (e incapacidade) de resolver problemas, sobre como programá-los da melhor forma possível, como deixar o computador e os dados contidos neles mais seguros, como ganhar desempenho e o que faz ele ficar tão lento às vezes a ponto de querermos destrui-lo.
+Então, estudar Arquitetura de Computadores é tão importante para um profissional de Computação, como estudar Anatomia é importante para um médico. Antes de iniciar qualquer estudo na Medicina, um médico precisa saber em detalhes o funcionamento do corpo humano. Quais são seus órgãos, como eles trabalham individualmente e como se relacionam para formar um sistema (digestivo, respiratório, motor etc.). Com a Arquitetura de Computadores é semelhante. Vamos aprender quais são os componentes de um computador, como eles funcionam e como eles trabalham em conjunto formando um sistema.
+Sem dúvidas o ser humano é a máquina mais perfeita já criada, mas vamos ver que o Computador é uma das máquinas mais incríveis que o homem já criou.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_um_aluno_de_licenciatura_em_computação_precisa_estudar_arquitetura_de_computadores">Um aluno de Licenciatura em Computação precisa estudar Arquitetura de Computadores?</h3>
+<div class="paragraph"><p>Ao longo de minha experiência como professor de Arquitetura de Computadores para alunos de Licenciatura em Computação, eu sempre ouvi essa pergunta. “Por que precisamos estudar Arquitetura de Computadores?”. Espero que isso já esteja claro para você. Mas se ainda não estiver, aqui vai uma outra razão. Você será um licenciado e vai trabalhar no ensino e aprendizagem da Ciência da Computação. Como ensinar alguém sobre essa ciência se você não souber em detalhes como um computador funciona? Isso seria como um professor de Farmácia que não conhece bem a Química, ou um professor de Matemática que não conhece os números.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_sistemas_analógicos_x_sistemas_digitais">Sistemas Analógicos x Sistemas Digitais</h3>
+<div class="paragraph"><p>Para sabermos a importância de um computador e sua forma de funcionamento, precisamos conhecer suas potencialidades e suas limitações. O computador é um dispositivo eletrônico digital. Isso significa que ele armazena, processa e gera dados na forma digital. Por outro lado, o computador não é capaz de processar dados analógicos. Eles antes precisam ser convertidos para digital para poderem ser utilizados por computadores. Mas o que venha a ser um dado analógico? Qualquer informação presente na natureza, como uma imagem, um som ou um cheiro, pode ser analisada em no mínimo duas componentes. Uma seria a sua intensidade e outra o tempo. A <a href="#analog_digital">Figura</a> a seguir apresenta essa representação, onde o sinal em forma de onda cinza seria a representação de um sinal analógico.</p></div>
+<div class="imageblock" id="analog_digital">
+<div class="content">
+<img src="images/fig2.png" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 1. Sinal Analógico versus Sinal Digital</div>
+</div>
+<div class="paragraph"><p>Um som, por exemplo, é formado por vibrações no ar de diferentes intensidades (amplitudes) ao longo do tempo. Cada amplitude vai soar para nossos ouvidos como um tom diferente e alguns são até imperceptíveis aos nossos ouvidos. Por outro lado, como o computador é um dispositivo baseado em números, para que ele armazene um som em sua memória e possa fazer qualquer processamento sobre ele (gravar, transmitir, mixar), ele deve antes representá-lo na forma de números. Ai que está a dificuldade. As intensidades possíveis de um som são tantas que se aproximariam do infinito. Para tornar essa grandeza mais clara, imagine que pudéssemos emitir a intensidade do som emitido por um pássaro. Se em terminado momento dissermos que essa intensidade tem valor 5. Logo em seguida um outro som é emitido, medidos e constatamos que sua intensidade é 4. Até aí tudo bem! Mas o pássaro poderá em seguida emitir diversos sons que estariam entre 4 e 5, como 4,23, ou 4,88938, ou até uma dízima periódica, como 4,6666… Um ser humano, mesmo que não consiga medir a intensidade do canto do pássaro, consegue ouvi-lo, apreciá-lo e até repeti-lo com uma certa proximidade com alguns assobios. Mas o computador não trabalha assim! Antes de tudo, um computador teria que discretizar esses valores medidos, ou seja, passá-los do domínio dos números reais para o domínio dos inteiros. Assim, o que era 4 permanece 4, o que era 5, continua como 5, mas o que foi medido como 4,23 é convertido para 4, e o que era 4,88938 e 4,666 são convertidos para 5. Dessa forma, o computador passa a tratar com números reais e finitos. Um canto de um pássaro (ou até de uma orquestra sinfônica) pode ser armazenado e processador pelo computador. Na <a href="#analog_digital">Figura</a> apresentada, a onda quadrada representa um sinal digital.</p></div>
+<div class="paragraph"><p>Mas perceba que o som emitido pelo pássaro teve que ser modificado. Ele antes era complexo, rico e cheio de detalhes. Agora se tornou algo mais simples e reduzido. Houve uma perda de informação ao passarmos o dado do analógico para o digital. Processo semelhante ocorre quando outras informações da natureza são passadas para o computador, como uma imagem através de uma foto, ou uma cena através de um vídeo. Parte da informação deve ser ignorada para que possa ser armazenada em computadores. Você deve estar se perguntando então, quer dizer que imagens e sons analógicos possuem mais qualidade do que digitais? A resposta rigorosa para essa pergunta é, sim! Mas uma resposta mais consciente seria, as vezes! Isso porque a perda causada pela digitalização pode ser reduzida até níveis altíssimos que modo que nem o ouvido, nem a visão humana serão capazes de perceber.</p></div>
+<div class="paragraph"><p>Como exemplo de dados analógicos podemos citar tudo o que vem da natureza, som, imagem, tato, cheiro, enquanto que digitais são todos aqueles armazenados por dispositivos eletrônicos digitais, como computadores, celulares e TVs (exceto as antigas analógicas). Se uma foto digital, por exemplo, possui menos qualidade do que uma analógica, por que todos procuram apenas máquinas fotográficas digitais, transformando as analógicas quase em peças de museu? A resposta está na praticidade. Os computadores só entendem informações digitais. Uma máquina fotográfica, mesmo com qualidade inferior, vai nos permitir passar as fotos para o computador, compartilhar com os amigos, aplicar edições e melhorias, ampliar e copiar quantas vezes quisermos. Tarefas que antes eram impossíveis com máquinas analógicas. O mesmo pode ser refletido para músicas, documentos e livros. O mundo hoje é analógico!</p></div>
+</div>
+<div class="sect2">
+<h3 id="_o_transistor">O Transistor</h3>
+<div class="paragraph"><p>O transistor é um componente eletrônico criado na década de 1950. Ele é o responsável pela revolução da eletrônica na década de 1960. Através dele foi possível desenvolver sistemas digitais extremamente pequenos. Todas funcionalidades de um computador são internamente executadas pela composição de milhões de transistores. Desde operações lógicas e aritméticas, até o armazenamento de dados em memórias (a exceção do disco rígido, CD, DVD e fitas magnéticas), tudo é feito pelos transistores.</p></div>
+<div class="paragraph"><p>Os primeiros eram fabricados na escala de micrômetros (10^-6 metros). Daí surgiram os termos microeletrônica e micro-tecnologia. Depois disso deu-se início a uma corrida tecnológica para se desenvolver transistores cada vez mais rápidos, menores e mais baratos. Essa revolução dura até hoje, mas foi mais forte nas décadas de 1980 e 1990. Foi emocionante acompanhar a disputa entre as empresas norte-americadas Intel e AMD para dominar o mercado de computadores pessoais. A cada 6 meses um novo processador era lançado por um delas, tomando da concorrente a posição de processador mais rápido do mercado. Poucos eram aqueles consumidores que conseguiam se manter a atualizados com tantos lançamentos.</p></div>
+<div class="paragraph"><p>O princípio básico é utilizar a eletrônica (corrente elétrica, resitência e tensão) para representar dados e depois poder executar operações com eles. A forma mais fácil de fazer isso foi primeiramente limitar os dados a apenas dois tipos. Zero e um. O sistema de numeração binário é muito mais fácil de representar com dispositivos eletrônicos do que o decimal, por exemplo. O transistor possui dois estados. Ou ele está carregado, ou está descarregado, assim como uma pilha. Isso facilmente pode ser mapeado para o bit 1 (carregado) e o bit (0). O revolucionário, diferente de uma pilha, foi possibilitar que esse estado pudesse ser mudado eletronicamente a qualquer momento e de forma muito rápida.
+
+Assim, com 8 transistores em paralelo, eu posso representar, por exemplo um número de 8 bits. Posso mudar seus valores mudando suas cargas, e posso ler seus valores chegando se cada um possui, ou não carga. Esse é o princípio básico de construção de uma memória.</p></div>
+<div class="paragraph"><p>De forma semelhante, é possível integrar transistores para que os mesmos executem operações lógicas e aritméticas. As portas lógicas estudadas por você em Introdução à Computação são todas fabricadas utilizando transistores.
+
+Quanto menores são os transistores, mais dados podem ser armazenados por área. Ao mesmo tempo, transistores menores guardam menos carga. Isso torna mais rápido o processo de carregamento e descarregamento, que, por consequência, torna o processamento e armazenamento de dados muito mais rápidos também.
+
+Com a evolução da nanoeletrônica, os transistores são tão pequenos que possibilitou a construção de memórias de 1GB (um giga byte) do tamanho da unha da mão de um adulto. Para ser ter uma ideia, 1 Giga é a abreviação de 10^9, ou seja, um bilhão. Um byte são 8 bits. Então, uma memória de 1GB possui, pelo menos, 8 bilhões de transistores. Os processadores também se tornaram bastante velozes com a miniaturização dos transistores. Os processadores atuais trabalham na frequência de GHz (Giga Hertz), ou seja, na casa de bilhões de ciclos por segundo (diferente de operações por segundo). Isso é muito rápido!</p></div>
+<div class="imageblock" id="mosfet">
+<div class="content">
+<img src="images/fig1.png" alt="images/fig1.png" />
+</div>
+<div class="title">Figura 2. Estrutura de um transistor tipo MOSFET</div>
+</div>
+<div class="paragraph"><p>Na <a href="#mosfet">Figura</a> anterior é apresentada a estrutura de um transistor MOSFET. Esse transistor é o mais utilizado para se construir sistemas eletrônicos digitais, como os computadores. O nome vem da abreviação de ‘Metal-Oxide Semiconductor Field-Effect Transistor’. Vamos ver o que significa cada palavra dessas, e isso nos ajudará a conhecer um pouco mais o MOSFET e sua relevância. O termo MOS (‘Metal-Oxide Semiconductor’) vem dos materiais utilizados para compor um MOSFET, que são principalmente, óxido metálico e semicondutor.</p></div>
+<div class="paragraph"><p>Semicondutores são materiais que possuem propriedades que nem os permitem classificar como condutor, nem como isolante. Em algumas condições ele age como um isolante, e em outras, como um condutor. O semicondutor mais utilizado em transistores é o silício (símbolo Si na Tabela Periódica). Em condições ambientes, o silício age como um isolante, mas se misturado a outros materiais, ele pode se tornar um condutor até a intensidade desejada.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Nota</div>
+</td>
+<td class="content">O Silício se tornou tão importante que modificou toda uma região da Califórnia nos Estados Unidos na década de 1950, tornando-a uma das mais promissoras do mundo até hoje. Essa região abrigou e abriga as mais importantes empresas do ramo de projeto de computadores, como Intel, AMD, Dell, IBM e Apple, e depois de softwares que iriam executar nesses computadores, como Microsoft, Oracle e Google. Essa região é chamada de Vale do Silício.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>No transistor da <a href="#mosfet">Figura</a> a cor verde representa um cristal de silício que foi dopado com cargas negativas. Já a cor vermelha, representa a parte que foi dopada com cargas positivas. Na situação normal uma corrente elétrica aplicada no Dreno (Drain) consegue produz percorrer o estreito canal negativo e seguir até a Fonte (Source). Nessa condição dizemos que o transistor está ativo. Porém, for aplicada uma tensão negativa na Porta (Gate), as cargas positivas da região P (em vermelho) serão atraídas para mais próximo da Porta, e isso irá fechar o canal por onde passava a corrente elétrica. Nesse caso, dizemos que o transistor está inativo.</p></div>
+<div class="paragraph"><p>Por que isso tudo nos interessa? Quando o transistor está ativo, ele pode ser visto com o valor 1, e quando inativo, ele pode ser visto com o valor 0. Assim, temos a menor memória possível de ser construída. Quando quisermos que ela guarde o valor 1, basta desligar a tensão da Porta e aplicar uma corrente no Dreno. Já quando quisermos que ele armazene o valor 0, precisamos aplicar uma corrente na Porta e fechar o canal. Então, a memória de 8 bilhões de bits, pode ser elaborada com 8 bilhões de transistores como esses.</p></div>
+<div class="paragraph"><p>Agora conhecemos o primeiro aspecto que faz dos transistores essenciais para o entendimento do computador. Eles são usados para a construção de memórias. Memórias feitas a base de transistores são chamadas também de Memórias de Estado Sólido. Mas há outras, não tão eficientes e miniaturizadas, como memórias ópticas e magnéticas. O importante percebermos é que quanto menores pudermos construir esses transistores, melhor. O processo de abertura e fechamento do canal não é instantâneo. Ele leva um curtíssimo tempo, mas quando somados os tempos de todos os bilhões de transistores, ele passa a se tornar relevante. Quanto menor ele for, mais estreito é o canal e, portanto, mais rápido ele liga e desliga, da mesma forma, menor será a distância entre o Dreno e a Fonte, levando também menos tempo para os elétrons deixarem o Dreno em direção à fonte. Isso tudo fará a memória mais rápida. Transistores pequenos também possibilitam que mais dados sejam armazenados por área. É por isso que hoje enormes capacidades de armazenamento são disponíveis em dispositivos tão reduzidos, como são os exemplos de pen-drives e cartões de memória.</p></div>
+<div class="paragraph"><p>Os transistores também são usados para executar operações lógicas e aritméticas. A carga retirada de um transistor pode servir para alimentar um outro e que, se combinados de forma correta, podem executar as operações lógicas básicas, E, OU, NÃO e as aritméticas, adição, subtração, divisão e multiplicação. Com isso, os transistores não apenas podem ser utilizados para armazenar dados, mas como executar operações lógicas e aritméticas sobre esses dados. Isso é fantástico e vem revolucionado todo o mundo. Não só na Ciência da Computação, mas como também em todas áreas do conhecimento. O que seria da humanidade hoje sem o computador? Sem o telefone celular? Sem os satélites?</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_lei_de_moore">A Lei de Moore</h3>
+<div class="paragraph"><p>asd</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_evolução_dos_computadores">A evolução dos computadores</h3>
+<div class="paragraph"><p>Texto aqui!!!!</p></div>
+</div>
+<div class="sect2">
+<h3 id="_a_arquitetura_de_von_neumann">A Arquitetura de Von Neumann</h3>
+<div class="paragraph"><p>Texto aqui!!!!</p></div>
+</div>
+<div class="sect2">
+<h3 id="_recapitulando">Recapitulando</h3>
+<div class="paragraph"><p>Revisão do que foi aprendido.</p></div>
+<div class="paragraph"><p>Reserve o último parágrafo para realizar uma <strong>ponte</strong> para o próximo capítulo.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atividades">Atividades</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Atenção</div>
+</td>
+<td class="content"><strong>Sempre termine os arquivos com uma linha em branco</strong>, caso 
+contrário você poderá encontrar erros inesperados.</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2014-02-10 23:08:25 BRT
+</div>
+</div>
+</body>
+</html>
