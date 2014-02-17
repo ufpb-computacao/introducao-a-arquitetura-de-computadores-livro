@@ -813,13 +813,36 @@ Sem dúvidas o ser humano é a máquina mais perfeita já criada, mas vamos ver 
 <div class="paragraph"><p>Ao longo de minha experiência como professor de Arquitetura de Computadores para alunos de Licenciatura em Computação, eu sempre ouvi essa pergunta. ``Por que precisamos estudar Arquitetura de Computadores?”. Espero que isso já esteja claro para você. Mas se ainda não estiver, aqui vai uma outra razão. Você será um licenciado e vai trabalhar no ensino e aprendizagem da Ciência da Computação. Como ensinar alguém sobre essa ciência se você não souber em detalhes como um computador funciona? Isso seria como um professor de Farmácia que não conhece bem a Química, ou um professor de Matemática que não conhece os números.</p></div>
 </div>
 <div class="sect2">
+<h3 id="_arquitetura_geral">Arquitetura geral</h3>
+<div class="paragraph"><p>Hoje em dia há muitos tipos de computadores e diversas arquiteturas. Elas são frutos de muitos estudos, pesquisas e avanços tecnológicos. Mas todos computadores compartilham uma arquitetura comum. Essa arquitetura é o que separa um computador de uma calculadora de bolso, de um aparelho de televisão ou um relógio de pulso. Essa arquitetura é apresentada na <a href="#fig_arquitetura">[fig_arquitetura]</a>.</p></div>
+<div class="imageblock" id="fig_arquitetura">
+<div class="content">
+<img src="images/fig_arquitetura.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 1. Arquitetura básica de um computador</div>
+</div>
+<div class="paragraph"><p>Todo computador possui uma Unidade Central de Processamento, ou, do inglês, <strong>Central Processing Unit</strong> (CPU) e uma Memória Principal. Todos os dados a serem processados pela CPU, para operações lógicas e aritméticas, precisam estar na memória. Da memória os dados são transferidos para a CPU através de fios paralelos de comunicação, chamados de Barramento de Dados. Entretando, a CPU não toma decisões por si própria. Ela não sabe que dados deve trazer da memória, muito menos que operação executar com eles. Para isso, ela precisa que instruções, também armazenadas na memória, sejam trazidas para a CPU através do Barramento de Endereço. Cada instrução informa para a CPU que operação ela deve executar, com quais dados e o que ela deve fazer com o resultado da operação.</p></div>
+<div class="paragraph"><p>Para poder se localizar, a memória é organizada em endereços. Todos os dados e as instruções são localizadas através desses endereços. Cada instrução indica para a CPU que dados devem ser transferidos e processados através dos endereços desses dados. Esse endereço é transferido para a memória pela CPU através do Barramento de Endereço. A memória localiza o tal dado e o transfere para a CPU via Barramento de Dados. As instruções são desenvolvidas pelo programador, através de linguagens de programação. As ferramentas de compilação transformam os programas escritos em linguagens de alto nível, como C, Java e Phython, em instruções de máquina, que são finalmente copiadas para a memória no momento em que precisam ser executadas. Cada instrução é armazenada em um endereço diferente da memória. Na execução normal, a CPU passa para a memória, via Barramento de Endereço, o endereço da primeira instrução do programa, a memória transfere a instrução pelo Barramento de Instrução, a CPU a executa e, em seguida, solicita a instrução do endereço seguinte. Assim, os programas são executados sempre de forma sequencial, a não ser que uma instrução especial solicite que ela salte para uma instrução que não seja a consecutiva. Isso é o caso quando há instruções condicionais (como o ``se” ou ``if”), instruções de repetição (como ``while” e o ``for”), ou chamadas a sub-programas, ou mesmo, por ordem do Sistema Operacional, para que o programa pare de executar para que um outro tome seu lugar.</p></div>
+<div class="paragraph"><p>As memórias são, quase sempre, muito mais lentas do que as CPUs. Isso exigiu, ao longo dos anos, que as CPUs possuíssem também uma porção interna de memória muito rápida, chamada Memória Cache. A tecnologia que permite essas memórias serem mais rápidas, tornam-as também muito caras. Por isso que sua capacidade geralmente é muito limitada. Para acelerar ainda mais, elas são instaladas dentro das CPUs. Todos os dados e instruções transferidos da Memória Principal para a CPU são salvos também na Cache. Como a Cache não é capaz de guardar todos os dados da Memória Principal, apenas os dados mais recentes transferidos para a CPU permanecem na Cache. Técnicas muito avançadas são aplicadas para que se consiga, no máximo possível, manter os dados mais importantes daquele instante na Memória Cache.</p></div>
+<div class="paragraph"><p>A CPU também é responsável por enviar sinais de controle aos outros dispositivos do computador, como periféricos, dispositivos de entrada e saída, e memórias externas. Esse sinais são enviados quando uma instrução dá ordem para tal. Por exemplo, quando uma instrução pede que uma mensagem sem impressa na tela, a CPU, ao receber e executar essa instrução, envia para o controle do monitor que imprima na tela a mensagem contida o endereço que também foi passada pela instrução.</p></div>
+<div class="paragraph"><p>É esse comportamento que diferencia um computador de outros dispositivos eletrônicos mais simples. A essência da CPU não é muito diferente de uma calculadora de bolso. Ela executa operações lógicas e aritméticas. Entretanto, no projeto do computador, o papel do homem foi substituído pela programação. Todas instruções das tarefas que a CPU precisa executar são armazenadas na memória e, a partir de então, a CPU pode trabalhar sem qualquer interferência externa. Com a programação, a CPU pode também executar tarefas diversas, desde simulações, jogos, tocar músicas e vídeos etc. Simplificando, o computador é uma máquina programável e de propósito geral.</p></div>
+<div class="sect3">
+<h4 id="_operações_básicas">Operações básicas</h4>
+<div class="paragraph"><p>Todos computadores executam três operações básicas:
+* Movimentação de dados
+* Processamentos de dados
+* Armazenamento de dados</p></div>
+<div class="paragraph"><p>A movimentação de dados é a transferência de um dado de um ponto para outro do computador. Pode ser de um endereço de memória para outro, de um dispositivo de entrada para a memória, ou da memória para um dispositivo de saída. O processamento de dados ocorre quando a CPU recebe um determinado dado e executa uma operação que o modifica de alguma forma. Já as operações de armazenamento ocorre quando a CPU precisa registrar um dado em algum local específico, como salvar um dado no disco rígido, ou num pendrive, ou mesmo na Memória Principal.</p></div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_sistemas_analógicos_x_sistemas_digitais">Sistemas Analógicos x Sistemas Digitais</h3>
 <div class="paragraph"><p>Para sabermos a importância de um computador e sua forma de funcionamento, precisamos conhecer suas potencialidades e suas limitações. O computador é um dispositivo eletrônico digital. Isso significa que ele armazena, processa e gera dados na forma digital. Por outro lado, o computador não é capaz de processar dados analógicos. Eles antes precisam ser convertidos para digital para poderem ser utilizados por computadores. Mas o que venha a ser um dado analógico? Qualquer informação presente na natureza, como uma imagem, um som ou um cheiro, pode ser analisada em no mínimo duas componentes. Uma seria a sua intensidade e outra o tempo. A <a href="#fig_analog_digital">[fig_analog_digital]</a> a seguir apresenta essa representação, onde o sinal em forma de onda cinza seria a representação de um sinal analógico.</p></div>
 <div class="imageblock" id="fig_analog_digital">
 <div class="content">
 <img src="images/fig2.png" alt="scaledwidth=“30%"" />
 </div>
-<div class="title">Figura 1. Sinal Analógico versus Sinal Digital</div>
+<div class="title">Figura 2. Sinal Analógico versus Sinal Digital</div>
 </div>
 <div class="paragraph"><p>Um som, por exemplo, é formado por vibrações no ar de diferentes intensidades (amplitudes) ao longo do tempo. Cada amplitude vai soar para nossos ouvidos como um tom diferente e alguns são até imperceptíveis aos nossos ouvidos. Por outro lado, como o computador é um dispositivo baseado em números, para que ele armazene um som em sua memória e possa fazer qualquer processamento sobre ele (gravar, transmitir, mixar), ele deve antes representá-lo na forma de números. Ai que está a dificuldade. As intensidades possíveis de um som são tantas que se aproximariam do infinito. Para tornar essa grandeza mais clara, imagine que pudéssemos emitir a intensidade do som emitido por um pássaro. Se em terminado momento dissermos que essa intensidade tem valor 5. Logo em seguida um outro som é emitido, medidos e constatamos que sua intensidade é 4. Até aí tudo bem! Mas o pássaro poderá em seguida emitir diversos sons que estariam entre 4 e 5, como 4,23, ou 4,88938, ou até uma dízima periódica, como 4,6666… Um ser humano, mesmo que não consiga medir a intensidade do canto do pássaro, consegue ouvi-lo, apreciá-lo e até repeti-lo com uma certa proximidade com alguns assobios. Mas o computador não trabalha assim! Antes de tudo, um computador teria que discretizar esses valores medidos, ou seja, passá-los do domínio dos números reais para o domínio dos inteiros. Assim, o que era 4 permanece 4, o que era 5, continua como 5, mas o que foi medido como 4,23 é convertido para 4, e o que era 4,88938 e 4,666 são convertidos para 5. Dessa forma, o computador passa a tratar com números reais e finitos. Um canto de um pássaro (ou até de uma orquestra sinfônica) pode ser armazenado e processador pelo computador. Na <a href="#fig_analog_digital">[fig_analog_digital]</a> apresentada, a onda quadrada representa um sinal digital.</p></div>
 <div class="paragraph"><p>Mas perceba que o som emitido pelo pássaro teve que ser modificado. Ele antes era complexo, rico e cheio de detalhes. Agora se tornou algo mais simples e reduzido. Houve uma perda de informação ao passarmos o dado do analógico para o digital. Processo semelhante ocorre quando outras informações da natureza são passadas para o computador, como uma imagem através de uma foto, ou uma cena através de um vídeo. Parte da informação deve ser ignorada para que possa ser armazenada em computadores. Você deve estar se perguntando então, quer dizer que imagens e sons analógicos possuem mais qualidade do que digitais? A resposta rigorosa para essa pergunta é, sim! Mas uma resposta mais consciente seria, as vezes! Isso porque a perda causada pela digitalização pode ser reduzida até níveis altíssimos que modo que nem o ouvido, nem a visão humana serão capazes de perceber.</p></div>
@@ -841,7 +864,7 @@ Com a evolução da nanoeletrônica, os transistores são tão pequenos que poss
 <div class="content">
 <img src="images/fig1.png" alt="images/fig1.png" />
 </div>
-<div class="title">Figura 2. Estrutura de um transistor tipo MOSFET</div>
+<div class="title">Figura 3. Estrutura de um transistor tipo MOSFET</div>
 </div>
 <div class="paragraph"><p>Na <a href="#fig_mosfet">[fig_mosfet]</a> anterior é apresentada a estrutura de um transistor MOSFET. Esse transistor é o mais utilizado para se construir sistemas eletrônicos digitais, como os computadores. O nome vem da abreviação de ``Metal-Oxide Semiconductor Field-Effect Transistor”. Vamos ver o que significa cada palavra dessas, e isso nos ajudará a conhecer um pouco mais o MOSFET e sua relevância. O termo MOS (``Metal-Oxide Semiconductor”) vem dos materiais utilizados para compor um MOSFET, que são principalmente, óxido metálico e semicondutor.</p></div>
 <div class="paragraph"><p>Semicondutores são materiais que possuem propriedades que nem os permitem classificar como condutor, nem como isolante. Em algumas condições ele age como um isolante, e em outras, como um condutor. O semicondutor mais utilizado em transistores é o silício (símbolo Si na Tabela Periódica). Em condições ambientes, o silício age como um isolante, mas se misturado a outros materiais, ele pode se tornar um condutor até a intensidade desejada.</p></div>
@@ -876,7 +899,7 @@ Com a evolução da nanoeletrônica, os transistores são tão pequenos que poss
 <div class="content">
 <img src="images/fig_moore.jpg" alt="scaledwidth=“30%"" />
 </div>
-<div class="title">Figura 3. Evolução do número de transistores nos processadores em comparação com a Lei de Moore</div>
+<div class="title">Figura 4. Evolução do número de transistores nos processadores em comparação com a Lei de Moore</div>
 </div>
 <div class="paragraph"><p>A Lei de Moore se tornou tão importante que ela não é usada apenas como uma meta a ser buscada e batida a cada ano, mas também como um meio para se verificar se a indústria está evoluindo na velocidade esperada. Apesar de Moore está muito correto em suas previsões, todos sabem, inclusive ele próprio, que esse crescimento não vai durar para sempre. Os transistores hoje estão na escala de 25 nanometros. Essa é a mesma escala de alguns vírus e bactérias. Reduzir mais do que isso está se tornando cada vez mais difícil. Pesquisadores e cientistas buscam outras formas de fazer com que os computadores continuem evoluindo em sua velocidade e reduzindo seu tamanho. Alguns pensam na substituição de transistores de Silício por outros materiais, como Grafeno. Outros até são mais radicais e defendem que a forma de computação deve mudar, talvez através de Computadores Quânticos ou de Bio-Computadores.</p></div>
 <div class="paragraph"><p>Quanto menores forem os transistores, mais rapidamente eles podem ser carregados e descarregados. Isso possibilita que o sistema trabalhe cada vez mais veloz. Mas há ainda outra limitação para a redução do tamanho dos transistores é a dissipação de calor. Quanto menores os transistores, mais deles são adicionados num mesmo circuito. O funcionamento dos transistores, como dito anteriormente, é feito através da passagem de corrente elétrica (elétrons em movimento). Como toda máquina elétrica, nem toda corrente é aproveitada. Muito dela é desperdiçada através da dissipação de calor. Então, uma vez que há milhões desses transistores trabalhando juntos, a dissipação de calor é ainda maior.</p></div>
@@ -925,7 +948,7 @@ Unidade de Entrada e Saída: responsável pela comunicação com os periféricos
 <div class="content">
 <img src="images/fig_neumann.jpg" alt="scaledwidth=“30%"" />
 </div>
-<div class="title">Figura 4. Estrutura da Máquina de von Neumann</div>
+<div class="title">Figura 5. Estrutura da Máquina de von Neumann</div>
 </div>
 <div class="paragraph"><p>A Arquitetura de von Neumann deu tão certo que todos os fabricantes começaram a segui-la. Os computadores utilizados até hoje em dia seguem os preceitos básicos propostos por ele. Muitos avanços surgiram, melhorias foram feitas, mas até hoje os computadores são formados por Unidades de Controle, CPU, ULA, memória e Unidades de Entrada e Saída. John von Neumann deixou um legado para toda a humanidade.</p></div>
 </div>
@@ -1006,17 +1029,22 @@ Unidade de Entrada e Saída: responsável pela comunicação com os periféricos
 <div class="ulist"><ul>
 <li>
 <p>
-Texto da atividade.
+Quais as quatro funções básicas que todos os computadores executam? Dê um exemplo de operação de cada uma delas.
+* Quais os elementos básicos de um computador e quais as funcionalidades de cada um deles?
 </p>
 </li>
 <li>
 <p>
-Texto da atividade.
+Quais as diferenças entre um sinal analógico e um digital? Apresente os pontos fortes e fracos de cada um deles. Na sua opinião, qual dos dois sinais apresentam maior qualidade?
 </p>
 </li>
 <li>
 <p>
-Texto da atividade.
+Caracterize o que é uma Máquina de von Neumann
+* O que são transistores? Quais as vantagens na concepção de computadores com o surgimento dos transistores? 
+* Por que quantos menores os transistores, mais velozes os computadores? Há desvantagens nessa miniaturização das máquinas? Quais?
+* O que diz a Lei de Moore? Em sua opinião, há um limite para esse crescimento? Onde vamos chegar?
+* Que outras técnicas podem ser utilizadas para aumento do desempenho dos processadores que não pela redução do tamanho dos transistores? Explique cada uma delas.
 </p>
 </li>
 </ul></div>
