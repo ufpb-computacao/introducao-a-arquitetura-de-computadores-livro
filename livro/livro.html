@@ -801,18 +801,7 @@ Identificar os principais fatos da evolução dos computadores
 </div>
 <div class="attribution">
 </div></div>
-<div class="paragraph"><p>Neste lugar você deve apresentar o conteúdo em forma de diálogo.</p></div>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<div class="title">Nota</div>
-</td>
-<td class="content">Para começar a escrever um novo capítulo, copie este arquivo e
-salve com outro nome (não utilize espaço no nome do arquivo). Em seguida,
-atualize o arquivo <strong>livro.asc</strong> para incluir o novo arquivo criado.
-Consulte o manual.</td>
-</tr></table>
-</div>
+<div class="paragraph"><p>Você sabe o que é Arquitetura de computadores? Você já se perguntou porque precisa estudar Arquitetura de Computadores? Esse capítulo nós vamos aprender que essa é uma das principais disciplinas da Ciência da Computação. Não só isso, foi a Arquitetura de Computadores que permitiu que a humanidade avançasse em todos os aspectos da ciência, saúde e tecnologia. Ao final desse capítulo, espero que você concorde comigo.</p></div>
 <div class="sect2">
 <h3 id="_o_que_é_a_arquitetura_de_um_computador">O que é a Arquitetura de um Computador?</h3>
 <div class="paragraph"><p>O termo arquitetura é principalmente utilizado na construção e decoração de edificações. Ele diz respeito à forma e a estrutura de uma construção. O termo refere-se à arte ou a técnica de projetar e edificar o ambiente habitado pelo ser humano. Na computação o termo foi adaptado para denominar a técnica (talvez até a arte também) de projetar e construir computadores. Nesse livro você não vai aprender a construir seu próprio computador. Para isso eu recomendo outros autores, John L. Hennessy, David A. Patterson e Andrew S. Tanenbaum. Esses autores produzem livros para engenheiros de computadores e acompanhá-los antes de se tornar um pode ser uma tarefa bastante árdua. Aqui você vai conhecer o computador por dentro e saber como ele funciona. Você não será capaz de construir um computador, mas saberá o suficiente para entender como os programas funcionam e até porque o computador para de funcionar as vezes, ou funciona lentamente, e que nessas situações, pressionar teclas do teclado rapidamente, ao mesmo tempo que move o mouse aleatoriamente, não faz o computador voltar a trabalhar novamente.</p></div>
@@ -1044,7 +1033,11 @@ Unidade de Entrada e Saída: responsável pela comunicação com os periféricos
 <li>
 <p>
 Quais as quatro funções básicas que todos os computadores executam? Dê um exemplo de operação de cada uma delas.
-* Quais os elementos básicos de um computador e quais as funcionalidades de cada um deles?
+</p>
+</li>
+<li>
+<p>
+Quais os elementos básicos de um computador e quais as funcionalidades de cada um deles?
 </p>
 </li>
 <li>
@@ -1055,13 +1048,231 @@ Quais as diferenças entre um sinal analógico e um digital? Apresente os pontos
 <li>
 <p>
 Caracterize o que é uma Máquina de von Neumann
-* O que são transistores? Quais as vantagens na concepção de computadores com o surgimento dos transistores? 
-* Por que quantos menores os transistores, mais velozes os computadores? Há desvantagens nessa miniaturização das máquinas? Quais?
-* O que diz a Lei de Moore? Em sua opinião, há um limite para esse crescimento? Onde vamos chegar?
-* Que outras técnicas podem ser utilizadas para aumento do desempenho dos processadores que não pela redução do tamanho dos transistores? Explique cada uma delas.
+</p>
+</li>
+<li>
+<p>
+O que são transistores? Quais as vantagens na concepção de computadores com o surgimento dos transistores?
+</p>
+</li>
+<li>
+<p>
+Por que quantos menores os transistores, mais velozes os computadores? Há desvantagens nessa miniaturização das máquinas? Quais?
+</p>
+</li>
+<li>
+<p>
+O que diz a Lei de Moore? Em sua opinião, há um limite para esse crescimento? Onde vamos chegar?
+</p>
+</li>
+<li>
+<p>
+Que outras técnicas podem ser utilizadas para aumento do desempenho dos processadores que não pela redução do tamanho dos transistores? Explique cada uma delas.
 </p>
 </li>
 </ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unidade_central_de_processamento_cpu">Unidade Central de Processamento (CPU)</h2>
+<div class="sectionbody">
+<div class="quoteblock">
+<div class="title">Objetivos do capítulo</div>
+<div class="content">
+<div class="paragraph"><p>Ao final deste capítulo você deverá ser capaz de:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+objetivo 1
+</p>
+</li>
+<li>
+<p>
+objetivo 2
+</p>
+</li>
+<li>
+<p>
+objetivo N
+</p>
+</li>
+</ul></div>
+</div>
+<div class="attribution">
+</div></div>
+<div class="paragraph"><p>Nesse capítulo vamos estudar a parte mais importante de um computador, que é a Unidade Central de Processamento, ou UCP, ou, do inglês, CPU.
+A CPU é responsável não apenas por executar os programas contidos na memória, mas também de controlar todos os dispositivos de entrada e saída.
+Seu avanço ao longo dos anos tem permitido que programas fossem executados cada vez mais rapidamente.
+Hoje temos processadores de vários núcleos capazes de executar várias atividades ao mesmo tempo.
+São esses processadores e funcionalidades que iremos estudar nesse capítulo.</p></div>
+<div class="sect2">
+<h3 id="_o_que_é_um_programa">O que é um programa?</h3>
+<div class="paragraph"><p>Nesse momento, você não apenas deve saber o que é um programa, como já deve ter até já escrito seus próprios programas e entendido um pouco como o computador funciona.
+Os programas são sequências finitas de passos que foram definidas por um programador para alcançar um objetivo específico.
+Cada passo desse programa é chamado de instrução.
+Não necessariamente, uma instrução escrito em uma linguagem de alto nível, como C, Java, Python, por exemplo, é diretamente transformada em uma instrução de máquina e armazenada em memória para execução da CPU.
+Na verdade, geralmente, uma instrução de uma linguagem de alto nível embute vários comandos e ações a serem executadas pela CPU.
+Essa é a principal razão da criação dessas linguagens de alto nível.
+O programador deve ter o menor trabalho possível ao escrever um programa.
+Ele deve se preocupar com o problema que está tentando solucionar, e em memorizar dezenas de comandos de uma linguagem de máquina extensa e repleta de detalhes.</p></div>
+<div class="paragraph"><p>Após compilado, o programada de linguagem de alto nível é transformado em um programa apenas com instruções de máquina.
+Cada instrução de máquina contém apenas uma única operação a ser realizada pela CPU.
+Para ser executado, esse programa deve ser transferido para a Memória Principal.
+No princípio, um Operador de Máquina, copiada todas instruções para a memória de maneira quase que manual.
+Hoje em dia essa operação é realizada pelo Sistema Operacional (Windows, Linux etc.).
+Assim que um usuário clica com o mouse, ou pressiona a tecla Enter do teclado solicitando que um determinado programa execute, o Sistema Operacional copia o programa para a memória e solicita que a CPU o execute.</p></div>
+<div class="paragraph"><p>Não podemos esquecer que a memória do computador apenas armazena números binários.
+Então, podemos dizer que um programa em linguagem de máquina é formado por instruções em binário.
+A cada instrução trazida da memória, a CPU lê seu código binário de operação para saber do que se trata, e inicia o processo de execução.
+Dependendo da operação, que pode ser de movimentação de dados, uma operação lógica, ou aritmética, ou uma operação de armazenamento de dados, a CPU envia ordens para que os outros dispositivos do computador atuem de forma a completar a operação.
+Essas ordens são enviadas através de pulsos elétricos passados por fios dentro do computador. Esses fios são chamados de <strong>Barramento de Controle</strong>.</p></div>
+<div class="sect3">
+<h4 id="_software_x_hardware">Software X Hardware</h4>
+<div class="paragraph"><p>O computador é composto por dois elementos, o software e o hardware.
+Tanto o hardware quando o software foram escritos por um programador, ou engenheiro, para se resolver um determinado problema.
+O início é sempre o mesmo. O profissional se depara com um problema e projeta uma solução algorítmica para ele.
+A diferença está na concepção. O hardware é concebido em chip, utilizando transistores interconectados.
+Uma vez elaborado, o hardware não pode mais ser modificado. Ele é uma solução rígida (do inglês, Hard) para o problema.
+Já o software é elaborado para ser armazenado numa memória e ser executado com um processador de propósito geral.
+Ele é uma solução flexível (do inglês, Soft) para o problema, já que o programador pode, a cada momento, modificar seu programa afim de torná-lo cada vez melhor.</p></div>
+<div class="paragraph"><p>Soluções em software são sempre mais lentas do que soluções equivalentes em hardware.
+Isso porque para executar um programa, cada instrução deve antes ser armazenada em memória, transferidas para a CPU (lembre-se que memórias são muito mais lentas do que CPUs) e, só então, ser executada pela CPU.
+Já as soluções em hardware não utilizam instruções, elas executam as operações diretamente.</p></div>
+<div class="paragraph"><p>Por outro lado, as soluções em software ganham em flexibilidade, já que os programas podem ser facilmente modificados.
+Já as soluções em hardware, não.
+Uma vez concebido, um hardware não pode mais ser modificado, ele deve ser descartado para dar lugar a uma versão mais nova.
+Isso torna projetos em hardware muito mais caros.</p></div>
+<div class="paragraph"><p>Para entender melhor, podemos citar alguns exemplos de implementações em hardware comumente utilizadas.
+Todas são escolhidas devido ao seu caráter de pouca necessidade de modificação, mas muito demanda por alto desempenho.
+Por exemplo, chips de criptografia para celulares (geralmente smartphones), processadores aritméticos para acelerar o cálculos, aceleradores gráficos para gerar gráficos mais rápidos, alguns chips para fazer edições rápidas em fotos, geralmente acoplados às câmeras digitais. As implementações são feitas em software quando a demanda por desempenho não é tanta, ao mesmo tempo em que as atualizações são frequentes, como os Sistemas Operacionais, os jogos e aplicativos em geral.</p></div>
+<div class="paragraph"><p>Apesar de não ser tão rápida quanto gostaríamos, a CPU é uma solução muito boa por permitir a execução de, praticamente, qualquer tipo de programa, se tornando uma máquina de propósito geral.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_estrutura_de_uma_cpu">Estrutura de uma CPU</h3>
+<div class="paragraph"><p>Toda CPU é formada por, pelo menos quatro elementos, como podem ser vistos na <a href="#fig_arq_detalhada">[fig_arq_detalhada]</a>:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Memória cache
+</p>
+</li>
+<li>
+<p>
+Registradores
+</p>
+</li>
+<li>
+<p>
+Unidade Lógica e Aritmética (ULA)
+</p>
+</li>
+<li>
+<p>
+Unidade de Controle (UC)
+</p>
+</li>
+</ul></div>
+<div class="imageblock" id="fig_arq_detalhada">
+<div class="content">
+<img src="images/fig_arq_detalhada.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 6. Estrutura de uma CPU</div>
+</div>
+<div class="paragraph"><p>A Memória Cache foi omitida para facilitar a visualização já que ela será apresentada e detalhada em capítulo posterior.</p></div>
+<div class="sect3">
+<h4 id="_os_registradores">Os registradores</h4>
+<div class="paragraph"><p>Os registradores são memórias elaboradas com o mínimo de transistores possível, utilizando o que há de mais moderno em tecnologia de armazenamento.
+Elas são as memórias mais rápidas que podem ser construídas e por isso são também as mais caras.
+Por essa razão, elas aparecem numa quantidade muito pequena em um computador, na casa de alguns Kilo Bytes.
+Eles podem ser divididos em dois grupos.
+Os registradores de propósito geral, e os de propósito específico.
+Como o próprio nome diz, os primeiros podem ser utilizados pelos programas para quaisquer objetivos, já os segundos são específicos para algumas tarefas.
+Por exemplo, há um registrador na CPU para controlar se o processador deve continuar em execução, ou entrar em modo de espera por nova ordem.
+Se esse registrador receber um valor diferente de zero, o processador entrará em modo de espera, até que receba a ordem de modificar esse valor.
+Na <a href="#fig_arq_detalhada">[fig_arq_detalhada]</a> os registradores de propósito específico apresentados são:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Program Counter (PC)
+</p>
+</li>
+<li>
+<p>
+Instruction Register (IR)
+</p>
+</li>
+<li>
+<p>
+Memory Address Register (MAR)
+</p>
+</li>
+<li>
+<p>
+Memory Buffer Register (MBR)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>O PC contém o endereço de memória que será utilizado para buscar a próxima instrução a ser executada pela CPU.
+Antes de executar qualquer instrução, a CPU envia o conteúdo de PC para a memória através do Barramento de Endereço, a memória envia o conteúdo da memória nesse endereço através do Barramento de Dados.
+Esse conteúdo é então armazenado no IR.
+Já o IR, que recebeu a instrução que veio da memória, tem o objetivo de guardar a instrução e passá-la para a Unidade de Controle, que é quem vai lê-la e tomar as decisões necessárias para executá-la.
+Com relação ao MAR e ao MBR, eles possuem funções análogas ao PC e IR, respectivamente, mas referentes a dados e não a instruções.
+Quando uma operação precisa ser realizada com algum dado que está na memória (e não em um registrador), o endereço desse dado é passado para o MAR.
+A CPU então passa o conteúdo de MAR para a memória através do Barramento de Endereço, que retornará o conteúdo da memória nesse endereço através do Barramento de Dados.
+O conteúdo trazido pela memória será armazenado em MBR.
+Só então o dado poderá ser utilizado para o processamento inicialmente planejado.</p></div>
+<div class="paragraph"><p>Os registradores de dados são utilizados para guardar as variáveis dos programas. Como eles estão presentes em quantidades muito pequenas, são poucas as variáveis que ficam armazenadas em registradores. As demais ficam na Memória Principal.
+Quando uma operação precisa ser realizada e seus dados estão nos Registradores de Propósito Geral, a CPU não precisa buscá-los na memória e o processamento torna-se muito mais lento.</p></div>
+<div class="paragraph"><div class="title">NOTE</div><p>Lembre-se que as memórias são muito mais lentas do que os processadores!</p></div>
+<div class="paragraph"><p>A CPU tenta ao máximo manter as variáveis mais utilizadas nos registradores. Ela faz isso guardando aquelas mais usadas nas últimas operações. Nem sempre isso funciona, mas no geral, é a melhor solução.</p></div>
+<div class="paragraph"><div class="title">NOTE</div><p>Faça suas variáveis mais importantes serem bastante utilizadas.
+Usando-as em repetições, por exemplo.
+Isso aumentará as chances delas serem armazenadas em registradores, podendo acelerar a execução dos seus programas.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_unidade_lógica_e_aritmética_ula">Unidade Lógica e Aritmética (ULA)</h4>
+<div class="paragraph"><p>j</p></div>
+</div>
+<div class="sect3">
+<h4 id="_unidade_de_controle_uc">Unidade de Controle (UC)</h4>
+<div class="paragraph"><p>k</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_funcionamento_de_uma_cpu">Funcionamento de uma CPU</h3>
+<div class="paragraph"><p>Revisão do que foi aprendido.</p></div>
+<div class="paragraph"><p>Reserve o último parágrafo para realizar uma <strong>ponte</strong> para o próximo capítulo.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atividades_2">Atividades</h3>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+<li>
+<p>
+Texto da atividade.
+</p>
+</li>
+</ol></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Atenção</div>
+</td>
+<td class="content"><strong>Sempre termine os arquivos com uma linha em branco</strong>, caso
+contrário você poderá encontrar erros inesperados.</td>
+</tr></table>
+</div>
 </div>
 </div>
 </div>
@@ -1069,7 +1280,7 @@ Caracterize o que é uma Máquina de von Neumann
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-02-10 23:08:25 BRT
+Last updated 2014-02-17 22:58:57 BRT
 </div>
 </div>
 </body>
