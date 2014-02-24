@@ -1,0 +1,19 @@
+/*  Este arquivo pode ser utilizado para geração de gráficos.
+http://www.graphviz.org/Gallery.php 
+*/
+
+digraph G {
+  rankdir="LR"
+  node[shape=box, style=filled]
+  label="Ciclo de Instrução"
+
+  inicio[label="Início", shape="ellipse", fillcolor=white];
+  fim[shape="ellipse", label="Fim", fillcolor=white];
+  busca[shape=box,label="Ciclo de busca", fillcolor="gray70"];
+  execucao[shape=box, label="Ciclo de execução", fillcolor="gray70"];
+
+  inicio->busca->execucao->fim;
+  execucao->busca[tailport=e,headport=nw];
+}
+
+
