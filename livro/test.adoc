@@ -1,0 +1,42 @@
+= Introdução a Arquitetura de Computadores
+:doctype: book
+:lang: pt-BR
+:keywords:    Computação
+:ascii-ids:
+:gitrepo: https://github.com/edusantana/linguagem-de-programacao-i-livro
+:resposta: image:images/icons/resposta.eps[]
+:solucao: image:images/icons/solucao.eps[]
+
+== Graficos
+
+[[fig_ciclo_instrucao]]
+["graphviz"]
+.Ciclo de Intrução
+----
+include::images/cap2/fig_ciclo_instrucao.dot[]
+----
+
+Utilizar esta imagem ao invés de:
+
+.Ciclo de Instrução
+image::images/fig_ciclo_instrucao.jpg[scaledwidth=“30%"]
+
+
+
+
+[[fig_ciclo_com_interrupcao]]
+["graphviz"]
+.Ciclo de Instruções com interrupções
+----
+include::images/cap2/fig_ciclo_com_interrupcao.dot[]
+----
+
+Utilizar esta imagem ao invés de:
+
+.Ciclo de Instruções com interrupções
+image::images/fig_ciclo_com_interrupcao.jpg[scaledwidth=“30%"]
+
+
+// Sempre termine os arquivos com uma linha em branco.
+
+

@@ -6,8 +6,9 @@ livro/*.pdf
 livro/*.png
 livro/*.svg
 livro/*.zip
-livro/livro.xml
 livro/slides.html
+livro/livro.xml
+livro/livro.html
 livro/livro.tex
 livro/images/graphiz.eps
 # TODO ignorar recursivamente *.asc~
