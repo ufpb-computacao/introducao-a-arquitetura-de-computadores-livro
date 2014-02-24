@@ -1151,36 +1151,66 @@ Por exemplo, chips de criptografia para celulares (geralmente smartphones), proc
 </div>
 <div class="sect2">
 <h3 id="_estrutura_de_uma_cpu">Estrutura de uma CPU</h3>
-<div class="paragraph"><p>Toda CPU é formada por, pelo menos quatro elementos, como podem ser vistos na <a href="#fig_arq_detalhada">[fig_arq_detalhada]</a>:</p></div>
+<div class="paragraph"><p>Toda CPU é formada por duas unidades, como podem ser vistas na <a href="#fig_CPU">[fig_CPU]</a>:</p></div>
 <div class="ulist"><ul>
-<li>
-<p>
-Memória cache
-</p>
-</li>
-<li>
-<p>
-Registradores
-</p>
-</li>
-<li>
-<p>
-Unidade Lógica e Aritmética (ULA)
-</p>
-</li>
 <li>
 <p>
 Unidade de Controle (UC)
 </p>
 </li>
+<li>
+<p>
+Unidade de Ciclo de Dados (UCD)
+</p>
+</li>
 </ul></div>
-<div class="imageblock" id="fig_arq_detalhada">
+<div class="imageblock" id="fig_CPU">
 <div class="content">
-<img src="images/fig_arq_detalhada.jpg" alt="scaledwidth=“30%"" />
+<img src="images/fig_CPU.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 6. Estrutura de uma CPU</div>
 </div>
-<div class="paragraph"><p>A Memória Cache foi omitida para facilitar a visualização já que ela será apresentada e detalhada em capítulo posterior.</p></div>
+<div class="paragraph"><p>A Unidade de Controle é responsável por receber instruções pelo Barramento de Instruções. As instruções vêem da memória de acordo com o endereço enviado pela UC para a memória através do Barramento de Endereço das Instruções (à esquerda da UC na <a href="#fig_CPU">[fig_CPU]</a>).
+Já Unidade de Ciclo de Dados, como o próprio nome deixa entender, é responsável por tratar os dados propriamente ditos.
+A Unidade de Controle não executa as instruções.
+Ela as lê, decodifica e passa os comandos para a UCD determinando como as instruções devem ser executadas e com quais dados.
+Baseada nessas comandos, a UCD pode ir buscar os dados necessários na memória, executa as devidas operações e envia o resultado de volta para a memória para ser armazenado.
+Tudo controlado de acordo com os comandos internos enviados pela Unidade de Controle, que por sua vez se baseia na instrução decodificada.
+Os dados lidos, ou enviados para a memória, são transmitidos através do Barramento de Dados.
+Os endereços são enviados para a memória através do Barramento de Endereço.</p></div>
+<div class="paragraph"><p>Tudo isso é controlado por um sinal síncrono de relógio (clock, do inglês).
+A cada batida do relógio a unidade sabe que deve executar um passo, passar os dados para quem deve, e se preparar para o próximo passo.
+Quanto mais rápido é o relógio mais operações por segundo o processador consegue executar e mais rápido pode se tornar.
+A velocidade do relógio é medida em frequência, utilizando a unidade Herz (abreviatura é Hz).
+Um Herz significa um passo por segundo.
+Os processadores atuais trabalham na faixa dos poucos GHz (leia-se Giga Herz), entre 1 GHz e 5 GHz.
+Um Giga Herz significa um bilhão de passos por segundo.
+É por isso que os computadores são tão incríveis.
+Eles não executam operações extraordinárias. Pelo contrário.
+Executam operações extremamente simples, como somas, subtrações e multiplicações, mas fazem isso numa velocidade incrível.</p></div>
+<div class="sect3">
+<h4 id="_os_papéis_dos_barramentos_e_da_memória">Os papéis dos barramentos e da memória</h4>
+<div class="paragraph"><p>Saindo um pouco de dentro da CPU, podemos enxergar os barramentos e a Memória Principal, como é apresentado na <a href="#fig_CPU_com_barramento">[fig_CPU_com_barramento]</a>.
+Para facilitar a visualização, os Barramentos de Dados e de Endereço são apresentados replicados, tanto do lado esquerdo, quanto do direito da figura.</p></div>
+<div class="imageblock" id="fig_CPU_com_barramento">
+<div class="content">
+<img src="images/fig_CPU_com_barramento.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 7. Estrutura de uma CPU com barramentos</div>
+</div>
+<div class="paragraph"><p>A comunicação da Unidade de Controle e da Unidade de Ciclo de Dados é feita sempre com a Memória Principal através dos barramentos.
+Os endereços são transmitidos sempre via Barramento de Endereços para a memória, sempre de forma unidirecional da CPU para a memória.
+Quando as instruções são transmitidas da memória para a Unidade de Controle, elas utilizam o Barramento de Dados.
+Isso porque as instruções são tratadas pela memória como um conteúdo como um outro qualquer.
+Ela não faz distinção entre dados e instruções.
+O mesmo Barramento de Dados é utilizado pela Unidade de Ciclo de Dados para receber os operando das operações a serem realizadas e para enviar os resultados de volta para a memória.</p></div>
+<div class="paragraph"><p>Fica claro então a importância da Memória Principal.
+Todo e qualquer programa só poderá ser executado a partir dela. Quando você, por exemplo, deseja executar um programa de um pendrive conectado pela USB do computador, ele antes precisa ser copiado para a Memória Principal.
+Só então ele será executado.
+A memória precisa ser grande o bastante para armazenar a maior quantidade possível de programas, e também precisa ser rápida o suficiente para buscar os dados e enviá-los o mais rapidamente possível à CPU, e também salvá-los no menor tempo possível.
+A velocidade das memórias é determinada essencialmente pela tecnologia de transistores utilizada.
+Essa tecnologia é relacionada ao preço. Quanto mais rápidas, mais caras elas são.</p></div>
+</div>
 <div class="sect3">
 <h4 id="_os_registradores">Os registradores</h4>
 <div class="paragraph"><p>Os registradores são memórias elaboradas com o mínimo de transistores possível, utilizando o que há de mais moderno em tecnologia de armazenamento.
@@ -1195,36 +1225,48 @@ Na <a href="#fig_arq_detalhada">[fig_arq_detalhada]</a> os registradores de prop
 <div class="ulist"><ul>
 <li>
 <p>
-Program Counter (PC)
+Program Counter (PC): Contador de Programas
 </p>
 </li>
 <li>
 <p>
-Instruction Register (IR)
+Instruction Register (IR): Registrador de Instrução
 </p>
 </li>
 <li>
 <p>
-Memory Address Register (MAR)
+Memory Address Register (MAR): Registrador de Endereço
 </p>
 </li>
 <li>
 <p>
-Memory Buffer Register (MBR)
+Memory Buffer Register (MBR): Registrador de Dados
 </p>
 </li>
 </ul></div>
+<div class="imageblock" id="fig_arq_detalhada">
+<div class="content">
+<img src="images/fig_arq_detalhada.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 8. Estrutura de uma CPU com registradores</div>
+</div>
 <div class="paragraph"><p>O PC contém o endereço de memória que será utilizado para buscar a próxima instrução a ser executada pela CPU.
 Antes de executar qualquer instrução, a CPU envia o conteúdo de PC para a memória através do Barramento de Endereço, a memória envia o conteúdo da memória nesse endereço através do Barramento de Dados.
 Esse conteúdo é então armazenado no IR.
-Já o IR, que recebeu a instrução que veio da memória, tem o objetivo de guardar a instrução e passá-la para a Unidade de Controle, que é quem vai lê-la e tomar as decisões necessárias para executá-la.
-Com relação ao MAR e ao MBR, eles possuem funções análogas ao PC e IR, respectivamente, mas referentes a dados e não a instruções.
+Já o IR, que recebeu a instrução que veio da memória, tem o objetivo de guardar a instrução e passá-la para a Unidade de Controle, que é quem vai lê-la e tomar as decisões necessárias para para que ela seja executada pela Unidade de Ciclo de Dados.
+Por se tratarem do processo de busca de instruções, o PC e o IR ficam instalados na Unidade de Controle.
+O PC possui conexão direta com o Barramento de Endereços, e o IR com o Barramento de Instruções.</p></div>
+<div class="paragraph"><p>Com relação ao MAR e ao MBR, eles possuem funções análogas ao PC e IR, respectivamente, mas referentes a dados e não a instruções.
 Quando uma operação precisa ser realizada com algum dado que está na memória (e não em um registrador), o endereço desse dado é passado para o MAR.
 A CPU então passa o conteúdo de MAR para a memória através do Barramento de Endereço, que retornará o conteúdo da memória nesse endereço através do Barramento de Dados.
 O conteúdo trazido pela memória será armazenado em MBR.
-Só então o dado poderá ser utilizado para o processamento inicialmente planejado.</p></div>
-<div class="paragraph"><p>Os registradores de dados são utilizados para guardar as variáveis dos programas. Como eles estão presentes em quantidades muito pequenas, são poucas as variáveis que ficam armazenadas em registradores. As demais ficam na Memória Principal.
-Quando uma operação precisa ser realizada e seus dados estão nos Registradores de Propósito Geral, a CPU não precisa buscá-los na memória e o processamento torna-se muito mais lento.</p></div>
+Só então o dado poderá ser utilizado para o processamento inicialmente planejado.
+O MBR e MAR possuem, respectivamente, conexões diretas com os Barramentos de Dados e de Endereços. Ambos são situados na Unidade de Ciclo de Dados, por serem utilizados nas fases de processamento das instruções.</p></div>
+<div class="paragraph"><p>O tamanho e quantidade dos registradores de uma CPU é uma das principais decisões de projeto.
+Se forem grandes demais, ou em quantidade maior do que a necessária, podem resultar em desperdício e aumento desnecessário no preço do processador.
+Já se forem pequenos, ou em pouca quantidade, com certeza vão tornar o computador muito mais lento do que o desejado.
+Encontrar o tamanho e quantidade ideias é trabalhoso e geralmente é feito através de simuladores e de muito testes e anos de experiência.</p></div>
+<div class="paragraph"><p>Os registradores de propósito geral são utilizados para guardar as variáveis dos programas. Como eles estão presentes em quantidades muito pequenas, são poucas as variáveis que ficam armazenadas em registradores. As demais ficam na Memória Principal. Quando uma operação precisa ser realizada e seus dados estão nos Registradores de Propósito Geral, a CPU não precisa buscá-los na memória e o processamento torna-se muito mais rápido.</p></div>
 <div class="paragraph"><div class="title">NOTE</div><p>Lembre-se que as memórias são muito mais lentas do que os processadores!</p></div>
 <div class="paragraph"><p>A CPU tenta ao máximo manter as variáveis mais utilizadas nos registradores. Ela faz isso guardando aquelas mais usadas nas últimas operações. Nem sempre isso funciona, mas no geral, é a melhor solução.</p></div>
 <div class="paragraph"><div class="title">NOTE</div><p>Faça suas variáveis mais importantes serem bastante utilizadas.
@@ -1233,46 +1275,161 @@ Isso aumentará as chances delas serem armazenadas em registradores, podendo ace
 </div>
 <div class="sect3">
 <h4 id="_unidade_lógica_e_aritmética_ula">Unidade Lógica e Aritmética (ULA)</h4>
-<div class="paragraph"><p>j</p></div>
+<div class="paragraph"><p>A Unidade Lógica e Aritmética, ou ULA, se assemelha muito com uma calculadora convencional.
+Ela executa operações lógicas e aritméticas.
+As ULAs modernas executam operações tanto com inteiros, como com números reais.
+A ULA recebe como entrada dois diferentes dados que são trazidos para ela dos registradores (de propósito geral, ou específicos) (veja a <a href="#fig_arq_detalhada">[fig_arq_detalhada]</a>).
+Quem decide que registradores passarão seus dados para a ULA é a Unidade de Controle baseada instrução que está sendo executada.
+A Unidade de Controle também envia para a ULA qual operação será realizada (soma, multiplicação, divisão, AND, OR etc.).
+Assim que isso é feito, a ULA executa a operação e gera um resultado na sua saída.
+Esse resultado também é passado para um registrador escolhido pela Unidade de Controle, baseando-se na instrução em execução.</p></div>
 </div>
 <div class="sect3">
 <h4 id="_unidade_de_controle_uc">Unidade de Controle (UC)</h4>
-<div class="paragraph"><p>k</p></div>
+<div class="paragraph"><p>A Unidade de Controle, ao receber a instrução que está armazenada em IR, a decodifica e envia os sinais de controle para onde for necessário.
+Decodificar nada mais é do que ler um código em binário e interpretar a operação relativa a esse código.
+Dependendo da operação, os sinais de controle podem ser internos, por exemplo, para a ULA executar uma soma, ou para o conteúdo de um registrador ser transferido para a ULA.
+Ou pode ser externo, para um dispositivo de entrada e saída, por exemplo, ou mesmo para a Memória Principal.
+Tudo isso depende da instrução a ser executada.</p></div>
+<div class="paragraph"><p>Na próxima seção será apresentada a execução de instruções em mais detalhes, o que facilitará o entendimento do funcionamento das CPUs.</p></div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_funcionamento_de_uma_cpu">Funcionamento de uma CPU</h3>
-<div class="paragraph"><p>Revisão do que foi aprendido.</p></div>
-<div class="paragraph"><p>Reserve o último parágrafo para realizar uma <strong>ponte</strong> para o próximo capítulo.</p></div>
+<h3 id="_ciclo_de_instrução">Ciclo de Instrução</h3>
+<div class="paragraph"><p>Toda CPU trabalha em dois ciclos principais, o Ciclo de Busca e o Ciclo de Execução, como pode ser visto na <a href="#fig_ciclo_instrucao">[fig_ciclo_instrucao]</a>.
+Assim que o computador é iniciado, a CPU entra no Ciclo de Busca, em seguida passa para o Ciclo de Execução e depois volta para o Ciclo de Busca.
+Ela continua nesse processo até que precise ser desligada, saindo do Ciclo de Execução para o estado final.</p></div>
+<div class="imageblock" id="fig_ciclo_instrucao">
+<div class="content">
+<img src="images/fig_ciclo_instrucao.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 9. Ciclo de Instrução</div>
+</div>
+<div class="paragraph"><p>Durante o Ciclo de Busca, é a Unidade de Controle que atua.
+Uma nova instrução é busca da Memória para que possa ser decodificada.
+Nessa fase os registradores PC e IR são utilizados, como apresentados na seção anterior.
+O PC é logo lido para se saber que instrução será executada, essa instrução é trazida para o IR e, finalmente, é decodificada pela Unidade de Controle.
+Assim que esse processo termina, caso a instrução não diga respeito à um laço, ou à uma repetição, o conteúdo de PC é incrementado. Ou seja, PC recebe PC + 1.
+Assim, no próximo Ciclo de Busca a instrução do endereço seguinte será carregada da memória e executada.
+Esse comportamento garante a característica de execução sequencial dos programas.</p></div>
+<div class="paragraph"><p>No passo seguinte a CPU entra em Ciclo de Execução.
+Nessa etapa atua a Unidade de Ciclo de Dados.
+Agora a Unidade de Controle já sabe exatamente que operação será executada, com quais dados e o que fazer com o resultado.
+Essa informação é passada para a ULA e os registradores envolvidos.
+Durante o Ciclo de Execução há cinco possíveis tipos de operação que podem ser executadas:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Processador e memória: trata simplesmente da transferência de dados entre CPU e memória principal ;
+</p>
+</li>
+<li>
+<p>
+Processador e Entrada e Saída: diz respeito à transferência de dados entre a CPU e um dispositivo de Entrada e Saída, como teclado, mouse, monitor, rede, impressora etc.;
+</p>
+</li>
+<li>
+<p>
+Processamento de Dados: são operações simplesmente de processamento dos dados, como operação aritmética ou lógica sobre os registradores da CPU;
+</p>
+</li>
+<li>
+<p>
+Controle: são instruções que servem para controlar os dispositivos do computador, como para ligar um periférico, iniciar uma operação do disco rígido, ou transferir um dado que acabou de chegar pela Internet para a Memória Principal;
+</p>
+</li>
+<li>
+<p>
+Operações compostas: são operações que combinam uma ou mais intrusões das outras em uma mesma operação.
+</p>
+</li>
+</ul></div>
+<div class="sect3">
+<h4 id="_busca_de_dados">Busca de Dados</h4>
+<div class="paragraph"><p>Em operações entre Processador e Memória, é necessário que dados sejam trazidos da memória para servirem de entrada para a ULA, e/ou o resultado seja levado para armazenamento na memória no final da execução.
+Para isso acontecer, é executada uma Busca de Dados. Isso é determinado durante a decodificarão da instrução, no ciclo de Busca de Instrução.
+Isso acontece quando um dos parâmetros de uma operação aritmética é um endereço de memória, e não um valor diretamente, nem um registrador.
+Para isso, parte do conteúdo de IR é transferido para o MAR. Essa parte é justamente o endereço do parâmetro da instrução.
+Em seguida a Unidade do Controle requisita à memória uma leitura.
+Assim, o endereço, agora em MAR, é passado para a memória e o conteúdo lido da memória é passado para o MBR.
+Agora o conteúdo é transferido para a ULA para que a operação seja executada (lógica ou aritmética).</p></div>
+<div class="paragraph"><p>Se a instrução tiver dois ou mais parâmetros de memória, serão necessárias outras Buscas de Dados.
+Como a memória é sempre mais lenta do que a CPU, instruções que necessitam Buscas de Dados são muito mais lentas do que instruções de Processamento de Dados.</p></div>
+<div class="paragraph"><p>Perceba que cada instrução pode exigir mais tempo de execução do que outras. Isso depende de quantos acessos à memória ela exigirá.
+Quanto mais acessos à memória, mais lenta a instrução.
+O ideal é sempre usar registradores.
+Mas nem sempre é possível utilizar registradores.
+Eles estão sempre em poucas quantidades e em menores tamanhos. Principalmente por serem caros.
+O que os computadores sempre tentam fazer é passar os dados da memória para os registradores assim que puderem, para que as próximas instruções sejam aceleradas.</p></div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_atividades_2">Atividades</h3>
-<div class="olist arabic"><ol class="arabic">
-<li>
-<p>
-Texto da atividade.
-</p>
-</li>
-<li>
-<p>
-Texto da atividade.
-</p>
-</li>
-<li>
-<p>
-Texto da atividade.
-</p>
-</li>
-</ol></div>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<div class="title">Atenção</div>
-</td>
-<td class="content"><strong>Sempre termine os arquivos com uma linha em branco</strong>, caso
-contrário você poderá encontrar erros inesperados.</td>
-</tr></table>
+<h3 id="_interrupções">Interrupções</h3>
+<div class="paragraph"><p>Além do ciclo básico de intrusão apresentado anteriormente, a CPU pode ainda executar outro tipo de tarefa.
+Ela diz respeito ao processamento de pedidos oriundos dos dispositivos de Entrada e Saída.
+Como o Ciclo de Instrução da CPU que vimos até o momento é fechado, ou seja, a CPU sempre fica em estado de repetição até que seja desligada, ela não pode atender a nenhum evento externo que não seja a execução de um programa.
+Por exemplo, quando um usuário pressiona uma tecla do teclado, ou faz um movimento com o mouse, ou mesmo, quando uma mensagem chega pela Internet através da placa de rede.
+O que a CPU deve fazer?
+Se ela estiver em um Ciclo de Instrução fechado como mostrado anteriormente, nada.
+Ela precisa parar o que está fazendo para atender ao evento ocorrido e, só então, voltar ao Ciclo de Instruções.
+Esse processo de parar o Ciclo de Instrução para atender a um evento externo é chamado de Interrupção.</p></div>
+<div class="paragraph"><p>O Ciclo de Instrução pode agora ser visto modificado na <a href="#fig_ciclo_com_interrupcao">[fig_ciclo_com_interrupcao]</a> para atender às Interrupções.
+Todas interrupções são recebidas e armazenadas internamente por um dispositivo chamado Gerenciador de Interrupções.
+Esse dispositivo é um chip, semelhante à uma CPU, mas bem mais simples.</p></div>
+<div class="imageblock" id="fig_ciclo_com_interrupcao">
+<div class="content">
+<img src="images/fig_ciclo_com_interrupcao.jpg" alt="scaledwidth=“30%"" />
 </div>
+<div class="title">Figura 10. Ciclo de Instruções com interrupções</div>
+</div>
+<div class="paragraph"><p>Na maioria dos computadores eles vêm soldados na Placa-Mãe, mas podem também vir dentro do chip da CPU.
+Toda interrupção possui um código de identificação. Sempre que uma nova interrupção chega nesse gerenciador, ele armazena esse código em sua memória e manda um sinal para CPU através do Barramento e Controle.
+Durante seu Ciclo de Instrução, sempre que uma instrução é executada, antes de voltar para o Ciclo de Busca, a CPU chega de algum sinal de interrupção foi enviado pelo Gerenciador de Interrupção.</p></div>
+<div class="paragraph"><p>Quando não há uma interrupção, a execução volta ao Ciclo de Busca e o programa em execução continua a ser executado.
+Mas se houver uma interrupção, a CPU agora vai parar a execução do programa atual para atender a interrupção.
+Por exemplo, vamos super que o usuário pressionou uma tecla do teclado.
+O código armazenado pelo Gerenciador de Interrupção indica que a interrupção veio do teclado.
+A CPU para sua execução do programa anterior e vai iniciar a execução de um programa especial, o Tratador de Interrupção.
+O código do dispositivo (aqui seria o teclado) serve para a CPU saber o endereço do Tratador de Interrupção ela vai buscar da memória.
+Então, ao sair do Checagem de Interrupção, a CPU muda o endereço do PC para o endereço do Tratador de Instrução.
+Assim, no Ciclo de Busca a próxima instrução a ser trazida da memória e posteriormente executada será a do tratador do teclado.</p></div>
+<div class="paragraph"><p>Cada tipo de interrupção precisa de um tratamento específico a ser feito. No caso do teclado, o tratador vai checar que tecla foi pressionada.
+Isso é feito através de uma leitura à memória do teclado (sim, todos dispositivos possuem uma pequena memória) para saber que tecla foi pressionada.
+Dependendo da tecla, uma operação diferente será executada.
+Geralmente, a CPU adiciona o código da tecla pressionada num endereço específico de memória. Cada programa, lendo essa informação, tomará sua própria decisão sobre o que deve ser feito.
+O que acontece é que apenas o programa ativo no momento, vai ler esse conteúdo, executar a ação da tecla e limpar essa área de memória.
+Se o programa for um editor de texto, por exemplo, o código pode representar escrever a letra pressionada na posição atual do cursor dentro do texto.</p></div>
+<div class="paragraph"><p>Quando esse processo encerra, o tratamento é encerrado, e a CPU deve voltar a execução do programa que havia sido interrompido.
+Isso só é possível porque, antes de passar a execução do Tratador de Interrupção, a CPU salva os conteúdos de todos os registradores da CPU (inclusive o PC e o IR).
+Então, antes de devolver a execução para o programa, CPU restaura todos os valores dos registradores antes salvos.
+Dessa forma, o programa retoma exatamente do ponto em que parou.</p></div>
+<div class="paragraph"><p>As interrupções também ocorrem se o próprio programa em execução executar uma operação ilegal.
+Isso é feito para evitar que a CPU entre em erro.
+Por exemplo, se um programa tentar acessar uma área da memória que é proibida para ele, como a área de outro programa ou do Sistema Operacional.
+Nesse caso, o programa é interrompido e não volta mais a executar, ele é finalizado e a execução é devolvida ao Sistema Operacional.
+Algo semelhante ocorre em caso de defeitos em alguns dispositivos.
+Por exemplo, se um programa estiver lendo um arquivo que está em um pendrive, e esse pendrive é removido subitamente, uma interrupção é lançada e o programa é encerrado, já que ele não faz mais sentido estar em execução.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_sobre_o_desempenho">Sobre o desempenho</h3>
+<div class="paragraph"><p>É possível agora perceber que o desempenho das CPUs depende de muito outros fatores além da velocidade do seu clock.
+O computador precisa ter memórias rápidas para reduzir o tempo dos Ciclos de Busca, precisam de mais registradores para usar menos a memória e também que poucas interrupções ocorram.
+Cada vez que uma interrupção ocorre, o programa deve ser interrompido e a chamada deve ser atendida.
+Isso vai atrasar demais o tempo de execução dos programas, dando a impressão de baixo desempenho.</p></div>
+<div class="paragraph"><p>Basicamente, há dois tipos programas, os orientados à CPU e os orientados a Entrada e Saída. Na <a href="#fig_entrada_saida">[fig_entrada_saida]</a> o comportamento dos primeiros é mostrado na parte a) e o dos segundos na parte b).</p></div>
+<div class="imageblock" id="fig_entrada_saida">
+<div class="content">
+<img src="images/fig_entrada_saida.jpg" alt="scaledwidth=“30%"" />
+</div>
+<div class="title">Figura 11. Execução com várias interrupções</div>
+</div>
+<div class="paragraph"><p>Quando um programa é orientado à CPU, há momentos longos de processamento de CPU e curtos momentos de espera por um evento de Entrada e Saída. É o exemplo de programas que fazem muitos cálculos matemáticos, como ferramentas de simulação, projetos de engenharia, computação gráfica e planilhas de cálculos. Inicialmente os dados de entrada são passados por um dispositivo de entrada, há longos momentos de cálculos e depois os resultados são passados para um dispositivo de entrada e saída.</p></div>
+<div class="paragraph"><p>Já nos programas orientados à Entrada e Saída (b), são aqueles chamados também de interativos. Há muitos momentos de interação e uso de dispositivos de Entrada e Saída, e poucos momentos de uso de CPU. Como é o caso de programas que usam muito de mouse e teclado, como os jogos e a própria navegação na internet.</p></div>
+<div class="paragraph"><p>O que temos que ter em mente é que o desempenho de um computador está muito ligado ao perfil de cada usuário. Os Sistemas Operacionais são os responsáveis por escolher que tarefa colocar para executar a cada momento e por quanto tempo ela deve executar até que uma nova tarefa entre em execução. Assim, o papel do Sistema Operacional também é fundamental e determinante no desempenho do sistema. O que ele tenta fazer no máximo que pode, é tentar ocupar os tempos de espera de um programa com a execução de outro. Tarefa nada fácil!</p></div>
+</div>
+<div class="sect2">
+<h3 id="_o_que_está_por_vir">O que está por vir</h3>
+<div class="paragraph"><p>Até o momento vimos como um processador básico trabalha. Nas próximas seções desse capítulo vamos ver como o desempenho pode ser ainda mais aumentando adicionando técnicas avançadas de execução paralela e de técnicas de análise de programas.</p></div>
 </div>
 </div>
 </div>
