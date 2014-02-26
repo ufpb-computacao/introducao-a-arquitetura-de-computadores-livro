@@ -1176,7 +1176,7 @@ Unidade de Ciclo de Dados (UCD)
 </ul></div>
 <div class="imageblock" id="fig_CPU">
 <div class="content">
-<img src="images/fig_CPU.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_CPU.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 6. Estrutura de uma CPU</div>
 </div>
@@ -1204,7 +1204,7 @@ Executam operações extremamente simples, como somas, subtrações e multiplica
 Para facilitar a visualização, os Barramentos de Dados e de Endereço são apresentados replicados, tanto do lado esquerdo, quanto do direito da figura.</p></div>
 <div class="imageblock" id="fig_CPU_com_barramento">
 <div class="content">
-<img src="images/fig_CPU_com_barramento.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_CPU_com_barramento.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 7. Estrutura de uma CPU com barramentos</div>
 </div>
@@ -1256,7 +1256,7 @@ Memory Buffer Register (MBR): Registrador de Dados
 </ul></div>
 <div class="imageblock" id="fig_arq_detalhada">
 <div class="content">
-<img src="images/fig_arq_detalhada.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_arq_detalhada.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 8. Estrutura de uma CPU com registradores</div>
 </div>
@@ -1277,11 +1277,25 @@ Se forem grandes demais, ou em quantidade maior do que a necessária, podem resu
 Já se forem pequenos, ou em pouca quantidade, com certeza vão tornar o computador muito mais lento do que o desejado.
 Encontrar o tamanho e quantidade ideias é trabalhoso e geralmente é feito através de simuladores e de muito testes e anos de experiência.</p></div>
 <div class="paragraph"><p>Os registradores de propósito geral são utilizados para guardar as variáveis dos programas. Como eles estão presentes em quantidades muito pequenas, são poucas as variáveis que ficam armazenadas em registradores. As demais ficam na Memória Principal. Quando uma operação precisa ser realizada e seus dados estão nos Registradores de Propósito Geral, a CPU não precisa buscá-los na memória e o processamento torna-se muito mais rápido.</p></div>
-<div class="paragraph"><div class="title">NOTE</div><p>Lembre-se que as memórias são muito mais lentas do que os processadores!</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Nota</div>
+</td>
+<td class="content">Lembre-se que as memórias são muito mais lentas do que os processadores!</td>
+</tr></table>
+</div>
 <div class="paragraph"><p>A CPU tenta ao máximo manter as variáveis mais utilizadas nos registradores. Ela faz isso guardando aquelas mais usadas nas últimas operações. Nem sempre isso funciona, mas no geral, é a melhor solução.</p></div>
-<div class="paragraph"><div class="title">NOTE</div><p>Faça suas variáveis mais importantes serem bastante utilizadas.
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Nota</div>
+</td>
+<td class="content">Faça suas variáveis mais importantes serem bastante utilizadas.
 Usando-as em repetições, por exemplo.
-Isso aumentará as chances delas serem armazenadas em registradores, podendo acelerar a execução dos seus programas.</p></div>
+Isso aumentará as chances delas serem armazenadas em registradores, podendo acelerar a execução dos seus programas.</td>
+</tr></table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_unidade_lógica_e_aritmética_ula">Unidade Lógica e Aritmética (ULA)</h4>
@@ -1311,7 +1325,7 @@ Assim que o computador é iniciado, a CPU entra no Ciclo de Busca, em seguida pa
 Ela continua nesse processo até que precise ser desligada, saindo do Ciclo de Execução para o estado final.</p></div>
 <div class="imageblock" id="fig_ciclo_instrucao">
 <div class="content">
-<img src="images/fig_ciclo_instrucao.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_ciclo_instrucao.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 9. Ciclo de Instrução</div>
 </div>
@@ -1327,33 +1341,48 @@ Nessa etapa atua a Unidade de Ciclo de Dados.
 Agora a Unidade de Controle já sabe exatamente que operação será executada, com quais dados e o que fazer com o resultado.
 Essa informação é passada para a ULA e os registradores envolvidos.
 Durante o Ciclo de Execução há cinco possíveis tipos de operação que podem ser executadas:</p></div>
-<div class="ulist"><ul>
-<li>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Processador e memória
+</dt>
+<dd>
 <p>
-Processador e memória: trata simplesmente da transferência de dados entre CPU e memória principal .
+trata simplesmente da transferência de dados entre CPU e memória principal;
 </p>
-</li>
-<li>
+</dd>
+<dt class="hdlist1">
+Processador e Entrada e Saída
+</dt>
+<dd>
 <p>
-Processador e Entrada e Saída: diz respeito à transferência de dados entre a CPU e um dispositivo de Entrada e Saída, como teclado, mouse, monitor, rede, impressora etc.
+diz respeito à transferência de dados entre a CPU e um dispositivo de Entrada e Saída, como teclado, mouse, monitor, rede, impressora etc.;
 </p>
-</li>
-<li>
+</dd>
+<dt class="hdlist1">
+Processamento de Dados
+</dt>
+<dd>
 <p>
-Processamento de Dados: são operações simplesmente de processamento dos dados, como operação aritmética ou lógica sobre os registradores da CPU.
+são operações simplesmente de processamento dos dados, como operação aritmética ou lógica sobre os registradores da CPU;
 </p>
-</li>
-<li>
+</dd>
+<dt class="hdlist1">
+Controle
+</dt>
+<dd>
 <p>
-Controle: são instruções que servem para controlar os dispositivos do computador, como para ligar um periférico, iniciar uma operação do disco rígido, ou transferir um dado que acabou de chegar pela Internet para a Memória Principal.
+são instruções que servem para controlar os dispositivos do computador, como para ligar um periférico, iniciar uma operação do disco rígido, ou transferir um dado que acabou de chegar pela Internet para a Memória Principal;
 </p>
-</li>
-<li>
+</dd>
+<dt class="hdlist1">
+Operações compostas
+</dt>
+<dd>
 <p>
-Operações compostas: são operações que combinam uma ou mais intrusões das outras em uma mesma operação.
+são operações que combinam uma ou mais intrusões das outras em uma mesma operação.
 </p>
-</li>
-</ul></div>
+</dd>
+</dl></div>
 <div class="sect3">
 <h4 id="_busca_de_dados">Busca de Dados</h4>
 <div class="paragraph"><p>Em operações entre Processador e Memória, é necessário que dados sejam trazidos da memória para servirem de entrada para a ULA, e/ou o resultado seja levado para armazenamento na memória no final da execução.
@@ -1388,7 +1417,7 @@ Todas interrupções são recebidas e armazenadas internamente por um dispositiv
 Esse dispositivo é um chip, semelhante à uma CPU, mas bem mais simples.</p></div>
 <div class="imageblock" id="fig_ciclo_com_interrupcao">
 <div class="content">
-<img src="images/fig_ciclo_com_interrupcao.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_ciclo_com_interrupcao.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 10. Ciclo de Instruções com interrupções</div>
 </div>
@@ -1429,7 +1458,7 @@ Isso vai atrasar demais o tempo de execução dos programas, dando a impressão 
 <div class="paragraph"><p>Basicamente, há dois tipos programas, os orientados à CPU e os orientados a Entrada e Saída. Na <a href="#fig_entrada_saida">[fig_entrada_saida]</a> o comportamento dos primeiros é mostrado na parte a) e o dos segundos na parte b).</p></div>
 <div class="imageblock" id="fig_entrada_saida">
 <div class="content">
-<img src="images/fig_entrada_saida.jpg" alt="scaledwidth=“30%"" />
+<img src="images/cap2/fig_entrada_saida.jpg" alt="scaledwidth=“30%"" />
 </div>
 <div class="title">Figura 11. Execução com várias interrupções</div>
 </div>
@@ -1438,7 +1467,38 @@ Isso vai atrasar demais o tempo de execução dos programas, dando a impressão 
 <div class="paragraph"><p>O que temos que ter em mente é que o desempenho de um computador está muito ligado ao perfil de cada usuário. Os Sistemas Operacionais são os responsáveis por escolher que tarefa colocar para executar a cada momento e por quanto tempo ela deve executar até que uma nova tarefa entre em execução. Assim, o papel do Sistema Operacional também é fundamental e determinante no desempenho do sistema. O que ele tenta fazer no máximo que pode, é tentar ocupar os tempos de espera de um programa com a execução de outro. Tarefa nada fácil!</p></div>
 </div>
 <div class="sect2">
-<h3 id="_o_que_está_por_vir">O que está por vir</h3>
+<h3 id="_exemplo_de_execução_de_um_programa">Exemplo de execução de um programa</h3>
+<div class="paragraph"><p>Suponha que queiramos executar uma instrução de máquina que soma dois números que estão na memória e salve o resultado em outro endereço de memória.
+Para tal, vamos indicar que a memória (M) se comporta como um vetor (um array) e entre colchetes indicaremos o endereço do dado, ou da instrução.
+Sendo assim, a instrução que gostaríamos de executar seria:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>200: M[100] = M[101] + M[102]</tt></pre>
+</div></div>
+<div class="paragraph"><p>Nesse caso, vamos ler que no endereço 200 da memória há uma instrução que precisa somar o conteúdo do endereço 101, com o conteúdo do endereço 102 e salvar o resultado no endereço 100 da memória. Supondo que M[101] contenha o valor 10, e M[102] contenha o valor 20, ao final da execução, o endereço 100 de memória (M[100]) deverá conter o valor 30.</p></div>
+<div class="paragraph"><p>Como uma instrução como essa será executada depende de cada arquitetura. Aqui vamos utilizar uma abordagem que quebra as instruções em pequenos passos simples, que facilitam o trabalho de decodificarão da CPU.
+Sendo assim, esse programa seria transformado na seguinte sequência de instruções:</p></div>
+<div class="paragraph"><p><strong>Ciclo de Busca:</strong></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>PC = 200;
+//Envia comando de leitura de instrução para a memória
+IR &lt;- (M[100] = M[101] + M[102]) // Busca instrução da memória
+PC = PC + 1
+//Instrução é passada do IR para a Unidade de Controle</tt></pre>
+</div></div>
+<div class="paragraph"><p><strong>Ciclo de Execução</strong></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>//O primeiro dado é trazido da memória para o registrador R1
+MAR = 101
+//Envia comando de leitura de dado para a memória
+MBR &lt;- 10
+R1 = MBR</tt></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_o_que_vem_por_aí">O que vem por aí</h3>
 <div class="paragraph"><p>Até o momento vimos como um processador básico trabalha. Nas próximas seções desse capítulo vamos ver como o desempenho pode ser ainda mais aumentando adicionando técnicas avançadas de execução paralela e de técnicas de análise de programas.</p></div>
 </div>
 </div>
