@@ -3,9 +3,20 @@
   rudder-doc-docinfo.xml
   DocBook document information file for rudder-doc.txt.
 -->
-  <edition>v0.2.0</edition>
+  <edition>v0.3.0</edition>
 
   <revhistory>
+    <revision>
+      <revnumber>v0.3.0</revnumber>
+      <date>13/03/2014</date>
+      <authorinitials>Alisson Brito, Eduardo</authorinitials>
+      <revremark>
+- Inclusão de novas seções no capítulo 2 
+- Revisão do Capítulo 2 #16 
+- Inclusão de um glossário dos termos #16 
+- Inclusão de palavras no Índice Remissico #16 
+      </revremark>
+    </revision>
     <revision>
       <revnumber>v0.2.0</revnumber>
       <date>20/02/2014</date>
