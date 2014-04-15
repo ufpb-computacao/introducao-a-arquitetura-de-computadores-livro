@@ -3,9 +3,24 @@
   rudder-doc-docinfo.xml
   DocBook document information file for rudder-doc.txt.
 -->
-  <edition>v0.3.0</edition>
+  <edition>v0.4.0</edition>
 
   <revhistory>
+
+    <revision>
+      <revnumber>v0.4.0</revnumber>
+      <date>15/04/2014</date>
+      <authorinitials>Alisson Brito, Eduardo</authorinitials>
+      <revremark>
+- Revisão do capítulo 3 #20
+- Atualização de imagens #19
+- Escrita do capítulo 3 #17
+- Correção de Herz para Hertz (cap2)
+      </revremark>
+    </revision>
+
+
+
     <revision>
       <revnumber>v0.3.0</revnumber>
       <date>13/03/2014</date>
