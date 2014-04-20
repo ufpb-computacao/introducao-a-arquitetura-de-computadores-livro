@@ -3839,17 +3839,17 @@ Neste caso, a instrução a ser decodificada pela Unidade de Controle precisará
 </div>
 <div class="title">Figura 16. ISA baseado em Acumulador</div>
 </div>
-<div class="paragraph"><p>Na sequência, a terceira arquitetura mais complexa é chamada Arquitetura Load/Store ou Registrador-Registrador.
+<div class="paragraph"><p>Na sequência, a terceira arquitetura mais complexa é chamada Arquitetura Load/Store ou Registrador-Registrador (<a href="#fig_regreg">[fig_regreg]</a>).
 Nesta arquitetura, todas operações lógicas e aritméticas executadas pela ULA são provenientes de dois registradores a serem determinados pela instrução.
 A única forma de acessar dados da memória é através de instruções especiais para escrever na memória (store) ou para trazer um dado da memória para um registrador (load).
 Assim, toda instrução a ser decodificada pela CPU deverá indicar o endereço de dois registradores que serão utilizados na operação lógica ou aritmética, ou um endereço de memória se a instrução for um load ou um store.</p></div>
-<div class="imageblock" id="fig_regmem">
+<div class="imageblock" id="fig_regreg">
 <div class="content">
 <img src="images/cap4/fig_regreg.jpg" alt="scaledwidth=“50%"" />
 </div>
 <div class="title">Figura 17. ISA Registrador-Registrador</div>
 </div>
-<div class="paragraph"><p>Por último, a mais complexa arquitetura é a Registrador-Memória.
+<div class="paragraph"><p>Por último, a mais complexa arquitetura é a Registrador-Memória (<a href="#fig_regmem">[fig_regmem]</a>).
 Esta arquitetura permite que a ULA execute operações lógicas e aritméticas envolvendo ao mesmo tempo um registrador indicado pela instrução e um conteúdo proveniente da memória.
 Esse tipo de instrução deve então trazer em seu conteúdo o código do registrador a ser utilizado e o endereço de memória do segundo dado.</p></div>
 <div class="imageblock" id="fig_regmem">
@@ -3913,76 +3913,60 @@ width="90%"
 frame="void"
 cellspacing="0" cellpadding="4">
 <caption class="title">Tabela 4. Exemplo de uma memória organizada por bytes</caption>
-<col width="33%" />
-<col width="66%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 <thead>
 <tr>
 <th align="center" valign="top"> Endereço </th>
 <th align="center" valign="top"> Byte 0  </th>
+<th align="center" valign="top"> Byte 1  </th>
+<th align="center" valign="top"> Byte 2  </th>
+<th align="center" valign="top"> Byte 3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center" valign="top"><p class="table">Byte 1</p></td>
-<td align="center" valign="top"><p class="table">Byte 2</p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table">Byte 3</p></td>
 <td align="center" valign="top"><p class="table">0</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">4</p></td>
 <td align="center" valign="top"><p class="table">13</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">23</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">8</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">12</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
-<td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">16</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">. . .</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
+<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
@@ -4045,76 +4029,60 @@ width="90%"
 frame="void"
 cellspacing="0" cellpadding="4">
 <caption class="title">Tabela 5. Exemplo de uma memória Big Endian</caption>
-<col width="33%" />
-<col width="66%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 <thead>
 <tr>
 <th align="center" valign="top"> Endereço </th>
 <th align="center" valign="top"> Byte 0  </th>
+<th align="center" valign="top"> Byte 1  </th>
+<th align="center" valign="top"> Byte 2  </th>
+<th align="center" valign="top"> Byte 3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center" valign="top"><p class="table">Byte 1</p></td>
-<td align="center" valign="top"><p class="table">Byte 2</p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table">Byte 3</p></td>
 <td align="center" valign="top"><p class="table">0</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">4</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
-<td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">8</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">U</p></td>
 <td align="center" valign="top"><p class="table">F</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">P</p></td>
 <td align="center" valign="top"><p class="table">B</p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">12</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
-<td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">16</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">. . .</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
+<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
@@ -4131,76 +4099,60 @@ width="90%"
 frame="void"
 cellspacing="0" cellpadding="4">
 <caption class="title">Tabela 6. Exemplo de uma memória Little Endian</caption>
-<col width="33%" />
-<col width="66%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
 <thead>
 <tr>
 <th align="center" valign="top"> Endereço </th>
 <th align="center" valign="top"> Byte 3  </th>
+<th align="center" valign="top"> Byte 2  </th>
+<th align="center" valign="top"> Byte 1  </th>
+<th align="center" valign="top"> Byte 0</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center" valign="top"><p class="table">Byte 2</p></td>
-<td align="center" valign="top"><p class="table">Byte 1</p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table">Byte 0</p></td>
 <td align="center" valign="top"><p class="table">0</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">4</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
-<td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">8</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">B</p></td>
 <td align="center" valign="top"><p class="table">P</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">F</p></td>
 <td align="center" valign="top"><p class="table">U</p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">12</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
+<td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
-<td align="center" valign="top"><p class="table"></p></td>
-<td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
-<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table">16</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">. . .</p></td>
 <td align="center" valign="top"><p class="table"></p></td>
-</tr>
-<tr>
+<td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 <td align="center" valign="top"><p class="table"></p></td>
 </tr>
@@ -4495,49 +4447,45 @@ frame="void"
 cellspacing="0" cellpadding="4">
 <caption class="title">Tabela 7. Arquiteturas RISC x CISC</caption>
 <col width="33%" />
-<col width="66%" />
+<col width="33%" />
+<col width="33%" />
 <thead>
 <tr>
 <th align="center" valign="top"> Características           </th>
 <th align="center" valign="top"> RISC                           </th>
+<th align="center" valign="top"> CISC</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center" valign="top"><p class="table">CISC</p></td>
 <td align="center" valign="top"><p class="table">Arquitetura</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">Registrador-Registrador</p></td>
 <td align="center" valign="top"><p class="table">Registrador-Memória</p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">Tipos de Dados</p></td>
 <td align="center" valign="top"><p class="table">Pouca variedade</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">Muito variada</p></td>
-<td align="center" valign="top"><p class="table">Formato das Instruções</p></td>
 </tr>
 <tr>
+<td align="center" valign="top"><p class="table">Formato das Instruções</p></td>
 <td align="center" valign="top"><p class="table">Instruções poucos endereços</p></td>
 <td align="center" valign="top"><p class="table">Instruções com muitos endereços</p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">Modo de Endereçamento</p></td>
 <td align="center" valign="top"><p class="table">Pouca variedade</p></td>
-</tr>
-<tr>
 <td align="center" valign="top"><p class="table">Muita variedade</p></td>
-<td align="center" valign="top"><p class="table">Estágios de Pipeline</p></td>
 </tr>
 <tr>
+<td align="center" valign="top"><p class="table">Estágios de Pipeline</p></td>
 <td align="center" valign="top"><p class="table">Entre 4 e 10</p></td>
 <td align="center" valign="top"><p class="table">Entre 20 e 30</p></td>
 </tr>
 <tr>
 <td align="center" valign="top"><p class="table">Acesso aos dados</p></td>
 <td align="center" valign="top"><p class="table">Via registradores</p></td>
+<td align="center" valign="top"><p class="table">Via memória</p></td>
 </tr>
 </tbody>
 </table>
