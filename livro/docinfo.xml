@@ -32,10 +32,10 @@ Correção de Herz para Hertz (cap2);
     <date>13/03/2014</date>
     <authorinitials>Alisson Brito, Eduardo</authorinitials>
     <revremark>
-- Inclusão de novas seções no capítulo 2 
-- Revisão do Capítulo 2 #16 
-- Inclusão de um glossário dos termos #16 
-- Inclusão de palavras no Índice Remissico #16 
+Inclusão de novas seções no capítulo 2;
+<ulink url="{gitrepo}/issues/16">Revisão do Capítulo 2;</ulink>
+<ulink url="{gitrepo}/issues/16">Inclusão de um glossário dos termos;</ulink>
+<ulink url="{gitrepo}/issues/16">Inclusão de palavras no Índice Remissico;</ulink>
     </revremark>
   </revision>
   <revision>

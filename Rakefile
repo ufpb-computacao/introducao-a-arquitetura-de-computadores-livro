@@ -23,6 +23,12 @@ PROJECT_NAME = File.basename(Dir.getwd)
 LIVRO_URL = `git config --get livro.url`.strip
 GITHUB_REPO = `git config remote.origin.url`.strip.gsub('git@github.com:','').gsub('.git','')
 
+# release
+REPOSITORIO_PATH=`git rev-parse --show-toplevel`.strip
+#@RELEASE_DIR = ''
+@tag = ''
+@SEJDA_BIN = '/home/santana/ambiente/sejda/bin/sejda-console'
+
 directory @RELEASE_DIR
 
 CLEAN.include('releases')
@@ -194,7 +200,8 @@ end
 
 desc "Download new Rakefile"
 task :uprake do
-  `wget --output-document=Rakefile https://raw.githubusercontent.com/edusantana/novo-livro/master/Rakefile`
+  `wget --output-document=Rakefile https://raw.githubusercontent.com/edusantana/asciidoc-book-template-with-rake-and-github/master/Rakefile`
+  `wget --output-document=livro/capitulos/feedback.adoc https://raw.githubusercontent.com/edusantana/asciidoc-book-template-with-rake-and-github/master/livro/capitulos/feedback.adoc`
 end
 
 
@@ -226,14 +233,13 @@ end
 
 namespace "github" do
   desc "List issues from github milestone. Default milestone state is closed, can also be all."
-  task :issues, [:milestone, :mstate] do |t,args|
-    args.with_defaults(:mstate => "closed")
+  task :issues, [:milestone] do |t,args|
     puts "Acessing: #{GITHUB_REPO} milestone=#{args.milestone}"
     require 'octokit'
 #    require 'highline/import'
     client = Octokit::Client.new
     milestone = nil
-    milestones = client.list_milestones(GITHUB_REPO, state: args.mstate, sort: 'created', direction: 'desc')
+    milestones = client.list_milestones(GITHUB_REPO, state: 'all', sort: 'created', direction: 'desc')
     opcoes = milestones.map {|m| m[:title]}
 
     if (args.milestone) then
@@ -270,5 +276,59 @@ namespace "github" do
       puts "- #{i[:title]} (##{i[:number]});"
     end
 
+    puts ""
+    puts "Para commits:"
+    issues.each do |i|
+      puts "#{i[:title]} closes ##{i[:number]}"
+    end
+
+
   end
+end
+
+namespace "release" do
+
+  desc "Archive files from git tag. If not tag is passed, the last tag applied will be used."
+  task :archive, [:tag] do |t, args|
+    last_tag = `git describe --abbrev=0`.strip
+    args.with_defaults(:tag => last_tag)
+    @tag = args.tag
+    @RELEASE_DIR = "releases/#{args.tag}"
+    Dir.chdir(REPOSITORIO_PATH) do
+      system "git archive --format=tar --prefix=#{@RELEASE_DIR}/ #{@tag} | (tar xf -) "
+    end
+  end
+
+  desc "Build book release. If not tag is passed, the last tag applied will be used."
+  task :build, [:tag] do |t, args|
+    last_tag = `git describe --abbrev=0`.strip
+    args.with_defaults(:tag => last_tag)
+    @tag = args.tag
+    @RELEASE_DIR = "releases/#{args.tag}"
+    release_dir = "releases/#{args.tag}"
+    target_file = "releases/#{@PROJECT_NAME}-#{@tag}.pdf"
+    editora_file = "#{release_dir}/livro/editora/editora.pdf"
+    livro_source = "#{release_dir}/livro/livro.asc"
+    livro_pdf = "#{release_dir}/livro/livro.pdf"
+
+    directory release_dir
+    file livro_source => [release_dir]
+    file livro_pdf => [livro_source] do
+      Dir.chdir(@RELEASE_DIR) do
+        @A2X_COMMAND="-v -k -f pdf --icons -a docinfo1 -a edition=#{@tag} -a lang=pt-BR -d book --dblatex-opts '-T computacao -P latex.babel.language=brazilian' -a livro-pdf"
+        system "#{@A2X_BIN} #{@A2X_COMMAND} livro/livro.asc"
+      end
+    end
+    file target_file => [livro_pdf] do
+      if File.exist? editora_file then
+        system "#{@SEJDA_BIN} merge -f #{editora_file} #{livro_pdf} -o #{target_file}"
+      else
+        mv livro_pdf, target_file
+      end
+    end
+
+    Rake::Task[target_file].invoke()
+
+  end # build
+
 end
