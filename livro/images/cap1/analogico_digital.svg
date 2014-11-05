@@ -14,7 +14,7 @@
    height="744.09448"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="analogico_digital.svg">
   <defs
      id="defs4">
@@ -84,8 +84,8 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer4"
      showgrid="false"
-     inkscape:window-width="1301"
-     inkscape:window-height="744"
+     inkscape:window-width="1375"
+     inkscape:window-height="876"
      inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
@@ -97,7 +97,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -307,7 +307,7 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csssaac" />
     <path
-       style="fill:none;stroke:#999999;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#666666;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 157.49353,552.10237 60.38148,0 0,-234.63542 113.61138,0 0,173.26081 118.87907,0.94194 -2.16737,-232.14235 58.83903,0 0,-59.26548 57.49772,0 0.94194,173.34783 56.71097,0.47097 0.39619,59.30981 116.38563,-1.17743 0,-57.45152 57.99753,0 0,60.34564 -1.49993,0"
        id="path4824"
        inkscape:path-effect="#path-effect4826"
@@ -328,7 +328,7 @@
          style="font-weight:bold;-inkscape-font-specification:Arial Bold">Sinal Analógico</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#999999;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#666666;fill-opacity:1;stroke:#666666;font-family:Arial;-inkscape-font-specification:Arial"
        x="571.30658"
        y="143.13623"
        id="text4832"
@@ -337,7 +337,7 @@
          id="tspan4834"
          x="571.30658"
          y="143.13623"
-         style="font-weight:bold;-inkscape-font-specification:Arial Bold">Sinal Digital</tspan></text>
+         style="font-weight:bold;-inkscape-font-specification:Arial Bold;stroke:#666666;fill:#666666">Sinal Digital</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow2Lend-8)"
        d="m 403.15068,152.55564 81.00691,67.81974"

@@ -7,7 +7,8 @@ require 'open3'
 task :default => [:wip]
 
 SOURCE_FILES = FileList['livro/livro.asc', 'livro/capitulos/*']
-@RELEASE_DIR = 'releases/current'
+CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`.strip
+@RELEASE_DIR = "releases/#{CURRENT_BRANCH}"
 @BOOK_SOURCE_DIR = 'livro'
 @BOOK_SOURCE = 'livro/livro.asc'
 @BOOK_TARGET = 'livro/livro.pdf'
@@ -18,7 +19,9 @@ RELEASE_BOOK  = "#{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/livro.pdf"
 RELEASE_WIP_ADOC =  "#{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.adoc"
 RELEASE_WIP_PDF  =  "#{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.pdf"
 OPEN_PDF_CMD=`git config --get producao.pdfviewer`.strip
-A2X_COMMAND="-v -k -f pdf --icons -a docinfo1 -a edition=`git describe` -a lang=pt-BR -d book --dblatex-opts '-T computacao -P latex.babel.language=brazilian' -a livro-pdf"
+
+A2X_COMMAND="-v -k -f pdf --icons -a docinfo1 -a edition=`git describe` -a lang=pt-BR -d book --dblatex-opts '-T computacao -P latex.babel.language=brazilian -P preface.tocdepth=1' -a livro-pdf"
+A2X_EPUB_COMMAND="-v -k -f epub --icons -a docinfo1 -a edition=`git describe` -a lang=pt-BR -d book "
 PROJECT_NAME = File.basename(Dir.getwd)
 LIVRO_URL = `git config --get livro.url`.strip
 GITHUB_REPO = `git config remote.origin.url`.strip.gsub('git@github.com:','').gsub('.git','')
@@ -36,21 +39,37 @@ CLEAN.include('releases')
 desc "Sync, build and open wip file"
 task :wip => [WIP_ADOC, "sync", "wip:build", "wip:open"]
 task :edit => ["wip:edit"]
-
+task :epub
 
 namespace "wip" do
+
+  file @BOOK_SOURCE
 
   desc "Create new wip file from book source"
   task "new" do
     cp "#{@BOOK_SOURCE}", "#{@BOOK_SOURCE_DIR}/wip.adoc"
   end
 
-  file WIP_ADOC do
+  file WIP_ADOC => [@BOOK_SOURCE] do
     Rake::Task["wip:new"].invoke
   end
 
-  file RELEASE_WIP_PDF do
-    system "#{@A2X_BIN} #{A2X_COMMAND} #{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.adoc"
+  EDITORA_PDF = "#{@BOOK_SOURCE_DIR}/editora/editora.pdf"
+  
+  desc "build book from #{@RELEASE_DIR}"
+  task :build => [WIP_ADOC, :sync] do
+    DRAFT_COMMAND = "--dblatex-opts '-P draft.mode=yes'"
+    prefacio_code_att = ""
+    PREFACIO_CODE_DIR = "#{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/capitulos/code/prefacio"
+    if Dir.exist?(PREFACIO_CODE_DIR) then
+      Dir.chdir(PREFACIO_CODE_DIR) do
+        prefacio_code_file = Dir.glob("*").first
+        if (prefacio_code_file) then
+          prefacio_code_att = "-a prefacio-code=#{prefacio_code_file}"
+        end
+      end
+    end
+    system "#{@A2X_BIN} #{A2X_COMMAND} #{DRAFT_COMMAND} #{prefacio_code_att} #{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.adoc"
   end
 
   desc "Open wip pdf"
@@ -60,7 +79,7 @@ namespace "wip" do
   end
 
   desc "Open docbook xml from wip build"
-  task "xml" do
+  task "xml" => ["#{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.xml"] do
     system "#{OPEN_PDF_CMD} #{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.xml"
   end
 
@@ -69,12 +88,15 @@ namespace "wip" do
     system "gvim #{WIP_ADOC}"
   end
 
-  desc "build book from #{@RELEASE_DIR}"
-  task :build => [WIP_ADOC, :sync] do
-    system "#{@A2X_BIN} #{A2X_COMMAND} #{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.adoc"
+
+  desc "build wip epub book"
+  task :epub do
+    system "#{@A2X_BIN} #{A2X_EPUB_COMMAND} #{@RELEASE_DIR}/#{@BOOK_SOURCE_DIR}/wip.adoc"
   end
 
+
 end
+
 
 
 
@@ -148,6 +170,7 @@ namespace "tag" do
 
   desc "Push tags"
   task "push" do
+    sh "git push origin"
     sh "git push origin --tags"
   end
 
@@ -196,14 +219,6 @@ namespace "config" do
   end
 
 end
-
-
-desc "Download new Rakefile"
-task :uprake do
-  `wget --output-document=Rakefile https://raw.githubusercontent.com/edusantana/asciidoc-book-template-with-rake-and-github/master/Rakefile`
-  `wget --output-document=livro/capitulos/feedback.adoc https://raw.githubusercontent.com/edusantana/asciidoc-book-template-with-rake-and-github/master/livro/capitulos/feedback.adoc`
-end
-
 
 desc "Build images from R files"
 task :r
@@ -286,6 +301,7 @@ namespace "github" do
   end
 end
 
+
 namespace "release" do
 
   desc "Archive files from git tag. If not tag is passed, the last tag applied will be used."
@@ -294,9 +310,7 @@ namespace "release" do
     args.with_defaults(:tag => last_tag)
     @tag = args.tag
     @RELEASE_DIR = "releases/#{args.tag}"
-    Dir.chdir(REPOSITORIO_PATH) do
-      system "git archive --format=tar --prefix=#{@RELEASE_DIR}/ #{@tag} | (tar xf -) "
-    end
+    system "git archive --format=tar --prefix=#{@RELEASE_DIR}/ #{@tag} | (tar xf -) "
   end
 
   desc "Build book release. If not tag is passed, the last tag applied will be used."
@@ -306,7 +320,7 @@ namespace "release" do
     @tag = args.tag
     @RELEASE_DIR = "releases/#{args.tag}"
     release_dir = "releases/#{args.tag}"
-    target_file = "releases/#{@PROJECT_NAME}-#{@tag}.pdf"
+    target_file = "releases/#{PROJECT_NAME}-#{@tag}.pdf"
     editora_file = "#{release_dir}/livro/editora/editora.pdf"
     livro_source = "#{release_dir}/livro/livro.asc"
     livro_pdf = "#{release_dir}/livro/livro.pdf"

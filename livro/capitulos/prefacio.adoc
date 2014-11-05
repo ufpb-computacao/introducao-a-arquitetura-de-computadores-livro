@@ -1,0 +1,38 @@
+O ensino de Arquitetura de Computadores para alunos de Licenciatura em
+Computação sempre foi uma tarefa repleta de barreiras difíceis de
+transpor. Uma delas vem dos próprios alunos por pura falta de
+conhecimento. Muitos consideram que o estudo de *Arquitetura de
+Computadores* se limite a conhecer o hardware, e como não são alunos de
+Engenharia, o consideram desnecessário. Sem motivação, o conteúdo se
+torna muitas vezes mais complexo do ele realmente é. Outra barreira
+vem dos próprios professores. Frequentemente eles foram educados pelo
+mesmo método do qual os alunos tanto reclamam. Consideram apenas o
+aspecto de hardware, com ênfase nos componentes eletrônicos e suas
+funções. Pouco se trata sobre sobre sua relevância para o sistema como
+um todo e, principalmente, na influência que decisões arquiteturais
+exerce sobre os programas executados no computador. 
+
+Neste sentido, este livro é destinado a alunos e professores dos
+cursos de Licenciatura em Computação. Trazendo mais de dez anos de
+experiência no ensino de Arquitetura de Computadores, muitas vezes com
+alunos desinformados e desmotivados. Com uma linguagem clara e
+objetiva, focando sempre na relevância desta disciplina tão
+interessante, mas muitas vezes renegadas por mestres e gestores.
+Espero que você, antes de tudo, se divirta com essa leitura e assim,
+acabe aprendendo e se motivando um pouco mais por este universo tão
+instigante.
+
+Professor Dr. Alisson Brito.
+
+[[como_estudar]]
+=== Como você deve estudar cada capítulo
+
+* Leia a visão geral do capítulo
+* Estude os conteúdos das seções
+* Realize as atividades no final do capítulo
+* Verifique se você atingiu os objetivos do capítulo
+
+.Na sala de aula do curso
+* Tire dúvidas e discuta sobre as atividades do livro com outros integrantes do curso
+* Leia materiais complementares eventualmente disponibilizados
+* Realize as atividades propostas pelo professor da disciplina
