@@ -2,6 +2,17 @@
 
 <revhistory>
 
+<revision>
+  <revnumber>v1.0.0</revnumber>
+  <date>5/11/2014</date>
+  <authorinitials>Alisson, Eduardo</authorinitials>
+  <revremark>
+<ulink url="{gitrepo}/issues/34">Revisão das imagens para impressão;</ulink>
+<ulink url="{gitrepo}/issues/35">cap1: Criação de imagem sobre situações do transistor MOSFET;</ulink>
+<ulink url="{gitrepo}/issues/36">Elaboração do Prefácio;</ulink>
+  </revremark>
+</revision>
+
   <revision>
     <revnumber>v0.4.1</revnumber>
     <date>15/04/2014</date>
