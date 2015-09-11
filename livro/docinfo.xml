@@ -2,6 +2,19 @@
 
 <revhistory>
 
+<revision>
+  <revnumber>v1.5.7</revnumber>
+  <date>11/09/2015</date>
+  <authorinitials>Eduardo</authorinitials>
+  <revremark>
+    Correções ortográficas: 
+    <ulink url="{gitrepo}/issues/8">#8</ulink>, 
+    <ulink url="{gitrepo}/issues/40">#40</ulink>, 
+    <ulink url="{gitrepo}/issues/41">#41</ulink>, 
+    <ulink url="{gitrepo}/issues/42">#42</ulink>, 
+    <ulink url="{gitrepo}/issues/43">#43</ulink>.
+  </revremark>
+</revision>
 
 <revision>
   <revnumber>v1.5.6</revnumber>
