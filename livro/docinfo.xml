@@ -3,6 +3,16 @@
 <revhistory>
 
 <revision>
+  <revnumber>v1.5.8</revnumber>
+  <date>23/10/2015</date>
+  <authorinitials> Eduardo </authorinitials>
+  <revremark> Correções ortográficas: 
+<ulink url="{gitrepo}/issues/44">#44</ulink> e 
+<ulink url="{gitrepo}/issues/45">#45.</ulink>
+  </revremark>
+</revision>
+
+<revision>
   <revnumber>v1.5.7</revnumber>
   <date>11/09/2015</date>
   <authorinitials>Eduardo</authorinitials>
